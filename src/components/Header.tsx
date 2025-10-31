@@ -66,7 +66,6 @@ import { useState } from 'react';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import { AppBar, Box , Menu , MenuItem, Toolbar , Button , Stack ,Typography ,CardMedia} from '@mui/material';
-import PersonIcon from '@mui/icons-material/Person';
 import AccountBoxOutlinedIcon from '@mui/icons-material/AccountBoxOutlined';
 
 const pages = [
