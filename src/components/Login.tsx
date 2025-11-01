@@ -12,9 +12,13 @@ import { useState } from "react";
 import RemoveRedEyeOutlinedIcon from "@mui/icons-material/RemoveRedEyeOutlined";
 import VisibilityOffOutlinedIcon from "@mui/icons-material/VisibilityOffOutlined";
 import CustomizedCheckbox from "./CustomCheckbox";
+import HighlightOffIcon from '@mui/icons-material/HighlightOff';
+
 
 const LoginUI = () => {
   const [showPassword, setShowPassword] = useState(false);
+   const [error] = useState(false);
+   const [errorPas] = useState(false); 
   return (
     <Box
       sx={{
@@ -64,9 +68,9 @@ const LoginUI = () => {
           >
             login
           </Typography>
-          <Box>
+         <Box>
             <Typography
-              sx={{ mb: 2, fontSize:{xs:'14px' , lg:'16px'}, color: "#ABABAB", fontWeight: "bold" }}
+              sx={{ mb: 2, fontSize: { xs: '14px', lg: '16px' }, color: "#ABABAB", fontWeight: "bold" }}
             >
               Email :
             </Typography>
@@ -74,6 +78,10 @@ const LoginUI = () => {
               fullWidth
               placeholder="Please Enter Your Email"
               variant="outlined"
+              error={error}
+              helperText={error ? 
+                "The Email Is Incorrect"
+                : ""} 
               InputProps={{
                 sx: {
                   bgcolor: "#242C39",
@@ -82,42 +90,58 @@ const LoginUI = () => {
                   "& input::placeholder": {
                     color: "#fff",
                     opacity: 1,
-                   fontSize:{xs:'12px' , lg:'14px'},
+                    fontSize: { xs: '12px', lg: '14px' },
                   },
-                 fontSize:{xs:'12px' , lg:'14px'},
+                  '& .MuiFormHelperText-root': { 
+                  fontSize: { xs: '1px', lg: '1px' }
+                },
+                  fontSize: { xs: '12px', lg: '14px' },
                   p: "2px",
                 },
+                endAdornment: error ? ( 
+                  <IconButton
+                    aria-label="clear"
+                   sx={{ color: '#F66066' , mr:1 }}
+                  >
+                    <HighlightOffIcon sx={{ fontSize: 22 }} />
+                  </IconButton>
+                ) : null,
               }}
               sx={{
                 mb: 2,
                 "& .MuiOutlinedInput-root": {
-                  "& fieldset": { border: "none" },
+                  "& fieldset": { 
+                    border: error ? "2px solid #F66066" : "none" 
+                  },
                 },
+                "& .MuiFormHelperText-root.Mui-error": { color: '#F66066' , fontSize: { xs: "12px", lg: "14px" },ml:'-1px' },
               }}
             />
           </Box>
-          <Box>
+         <Box>
             <Typography
-              sx={{ mb: 2,fontSize:{xs:'14px' , lg:'16px'}, color: "#ABABAB", fontWeight: "bold" }}
+              sx={{ mb: 2, fontSize: { xs: '14px', lg: '16px' }, color: "#ABABAB", fontWeight: "bold" }}
             >
               Password :
             </Typography>
             <TextField
               fullWidth
               placeholder="Please Enter Your Password"
-              type={showPassword ? "text" : "password"}
+              type={showPassword ? "text" : "password"} 
               variant="outlined"
+              error={errorPas} 
+              helperText={errorPas ? "The Password Is Incorrect" : ""} 
               InputProps={{
                 sx: {
                   bgcolor: "#242C39",
                   borderRadius: "8px",
                   color: "#fff",
-                   fontSize:{xs:'12px' , lg:'14px'},
+                  fontSize: { xs: '12px', lg: '14px' },
                   p: "2px",
                   "& input::placeholder": {
                     color: "#fff",
                     opacity: 1,
-                     fontSize:{xs:'12px' , lg:'14px'},
+                    fontSize: { xs: '12px', lg: '14px' },
                   },
                 },
                 endAdornment: (
@@ -125,14 +149,14 @@ const LoginUI = () => {
                     <IconButton
                       onClick={() => setShowPassword((prev) => !prev)}
                       sx={{
-                        color: "#ABABAB",
-                        "&:hover": { color: "#fff" },
+                        color: errorPas ? '#F66066' : "#ABABAB",
+                        mr: 1,
                       }}
                     >
                       {showPassword ? (
-                       <VisibilityOffOutlinedIcon />
-                      ) : (  
-                         <RemoveRedEyeOutlinedIcon />
+                        <VisibilityOffOutlinedIcon /> 
+                      ) : (
+                        <RemoveRedEyeOutlinedIcon /> 
                       )}
                     </IconButton>
                   </InputAdornment>
@@ -140,8 +164,12 @@ const LoginUI = () => {
               }}
               sx={{
                 "& .MuiOutlinedInput-root": {
-                  "& fieldset": { border: "none" },
+                  "& fieldset": { 
+                    border: errorPas ? "2px solid red" : "none"
+                  },
+                  "&.Mui-focused fieldset": { borderColor: errorPas ? '#F66066' : 'none' },
                 },
+                "& .MuiFormHelperText-root.Mui-error": { color: '#F66066', fontSize: { xs: "12px", lg: "14px" },ml:'-1px' },
               }}
             />
           </Box>
