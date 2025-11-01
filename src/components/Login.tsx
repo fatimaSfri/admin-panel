@@ -1,123 +1,232 @@
-import { Box,Card, TextField, Button, FormControlLabel, Checkbox, Typography, Link, } from "@mui/material"
+import {
+  Box,
+  Card,
+  TextField,
+  Button,
+  Typography,
+  Link,
+  InputAdornment,
+  IconButton,
+} from "@mui/material";
+import { useState } from "react";
+import RemoveRedEyeOutlinedIcon from "@mui/icons-material/RemoveRedEyeOutlined";
+import VisibilityOffOutlinedIcon from "@mui/icons-material/VisibilityOffOutlined";
+import CustomizedCheckbox from "./CustomCheckbox";
 
-
-const Loginui = () => {
-
-
-
-
-
-return (
-<Box sx={{border:"4px red solid" ,width:'100', height:'75%' , mt:14,
-display:'flex' , justifyContent:'center',
-alignItems:'center'}} >
-<Card
-   sx={{
-      backgroundColor: 'rgba(255, 255, 255, 0.03)',
-      backdropFilter: 'blur(10px)',
-      WebkitBackdropFilter: 'blur(10px)',
-      borderRadius: 2,
-      width: '40%',
-      height: '80%',
-      boxShadow: '0 4px 20px rgba(42, 51, 66, 0.3)',
-      p: 2,
-
-    }}
-  >
-<Box
-      component="form"
-      sx={{
-        display: 'flex',
-        flexDirection: 'column',
-        gap: 2,
-        maxWidth: 400,
-        mx: 'auto',
-        p: 3,
-      }}
-      autoComplete="off"
-    >
-
-      <TextField
-        label="ایمیل"
-        type="email"
-        sx={{bgcolor:"white"}}
-      />
-       <TextField
-        label="پسورد"
-        type="password"
-        sx={{bgcolor:"white"}}
-      />
-
+const LoginUI = () => {
+  const [showPassword, setShowPassword] = useState(false);
+  return (
     <Box
       sx={{
-        display: 'flex', // flex برای چیدمان افقی.
-        alignItems: 'center', // عمودی وسط‌چین.
-        justifyContent: 'space-between', // چک‌باکس چپ، لینک راست – پخش فاصله!
-        width: '100%', // عرض کامل Box.
-        p: 1, // padding ریز دور Box.
-        backgroundColor: 'grey.100', // زمینه ملایم برای تست – اختیاری!
-        borderRadius: 1, // گوشه‌های گرد.
+       flexGrow: 1,
+        mt: 14,
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        py:4
       }}
     >
-      {/* چک‌باکس با label – ساده و شیک! */}
-      <FormControlLabel
-        control={
-          <Checkbox
-            defaultChecked // پیش‌فرض تیک‌خورده – اختیاری!
-            sx={{ color: 'grey.500', '&.Mui-checked': { color: 'primary.main' } }} // رنگ تیره/آبی.
-          />
-        }
-        label="مرا به خاطر بسپار" // متن کنار چک‌باکس.
-        sx={{ color: 'grey.600' }} // رنگ label خاکستری.
-      />
-
-      {/* نوشته لینکی – clickable! */}
-      <Typography
-        variant="body2" // اندازه کوچک.
-        color="primary" // رنگ آبی MUI – لینک‌مانند!
+      <Card
+        elevation={0}
         sx={{
-          cursor: 'pointer', // موس روش hover بشه، دستک تغییر کنه.
-          textDecoration: 'underline', // خط زیرین برای حس لینک.
-          '&:hover': { textDecoration: 'underline wavy' }, // hover موج‌دار – فان!
+          width: { xs: "80%", sm: "560px" },
+          backgroundColor: "rgba(250, 250, 250, 0.025)",
+          backdropFilter: "blur(20px)",
+          borderRadius: 10,
+          px: {xs:2 ,lg:6},
+          py: 8,
         }}
       >
-        فراموشی رمز عبور
-      </Typography>
-    </Box>
-     <Button
-        type="submit"
-        variant="contained"
-        color="primary"
-        sx={{ mt: 1 }}
-      
-      >
-        ارسال
-      </Button>
-    </Box>
-    <Typography
-      variant="body2"
-      sx={{
-        textAlign: 'center', // وسط‌چین.
-        mt: 2, // margin-top ۲ واحد، پایین فرم.
-        color: 'grey.500', // رنگ خاکستری برای متن اصلی.
-      }}
-    >
-      حساب نداری؟{' '}
-      <Link
-        href="/register" // لینک به صفحه ریجستر – عوض کن به روت React Router!
-        underline="hover" // خط زیرین فقط hover – شیک!
-        color="primary" // رنگ آبی MUI – لینک‌مانند!
-        sx={{
-          cursor: 'pointer', // موس دستک بشه.
-          fontWeight: 'bold', // bold برای برجسته شدن.
-        }}
-      >
-        ثبت‌نام کن
-      </Link>
-    </Typography>
-  </Card>
-</Box>
-)
-}
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            gap: 2,
+          }}
+        >
+          <Typography
+            sx={{
+              fontFamily: "Niramit, sans-serif",
+              fontWeight: 700,
+              fontStyle: "normal",
+              fontSize:{xs:'30px' , lg:'36px'},
+              lineHeight: "100%",
+              letterSpacing: "0%",
+              textTransform: "capitalize",
+              background: "linear-gradient(60deg, #1D8D94 30%, #99D9A6 70%)",
+              backgroundClip: "text",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+              leadingTrim: "none",
+              textAlign: "center",
+            }}
+          >
+            login
+          </Typography>
+          <Box>
+            <Typography
+              sx={{ mb: 2, fontSize:{xs:'14px' , lg:'16px'}, color: "#ABABAB", fontWeight: "bold" }}
+            >
+              Email :
+            </Typography>
+            <TextField
+              fullWidth
+              placeholder="Please Enter Your Email"
+              variant="outlined"
+              InputProps={{
+                sx: {
+                  bgcolor: "#242C39",
+                  borderRadius: "8px",
+                  color: "#fff",
+                  "& input::placeholder": {
+                    color: "#fff",
+                    opacity: 1,
+                   fontSize:{xs:'12px' , lg:'14px'},
+                  },
+                 fontSize:{xs:'12px' , lg:'14px'},
+                  p: "2px",
+                },
+              }}
+              sx={{
+                mb: 2,
+                "& .MuiOutlinedInput-root": {
+                  "& fieldset": { border: "none" },
+                },
+              }}
+            />
+          </Box>
+          <Box>
+            <Typography
+              sx={{ mb: 2,fontSize:{xs:'14px' , lg:'16px'}, color: "#ABABAB", fontWeight: "bold" }}
+            >
+              Password :
+            </Typography>
+            <TextField
+              fullWidth
+              placeholder="Please Enter Your Password"
+              type={showPassword ? "text" : "password"}
+              variant="outlined"
+              InputProps={{
+                sx: {
+                  bgcolor: "#242C39",
+                  borderRadius: "8px",
+                  color: "#fff",
+                   fontSize:{xs:'12px' , lg:'14px'},
+                  p: "2px",
+                  "& input::placeholder": {
+                    color: "#fff",
+                    opacity: 1,
+                     fontSize:{xs:'12px' , lg:'14px'},
+                  },
+                },
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <IconButton
+                      onClick={() => setShowPassword((prev) => !prev)}
+                      sx={{
+                        color: "#ABABAB",
+                        "&:hover": { color: "#fff" },
+                      }}
+                    >
+                      {showPassword ? (
+                       <VisibilityOffOutlinedIcon />
+                      ) : (  
+                         <RemoveRedEyeOutlinedIcon />
+                      )}
+                    </IconButton>
+                  </InputAdornment>
+                ),
+              }}
+              sx={{
+                "& .MuiOutlinedInput-root": {
+                  "& fieldset": { border: "none" },
+                },
+              }}
+            />
+          </Box>
+          {/* checkbox */}
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+              width: "100%",
+            }}
+          >
+            <CustomizedCheckbox></CustomizedCheckbox>
 
-export default Loginui
+            <Typography
+              variant="body2"
+              sx={{
+                fontSize:{xs:'12px' , sm:'14px' , lg:'16px'},
+                color: "#1D8D94",
+                cursor: "pointer",
+                fontWeight: "bold",
+                textDecoration: "underline",
+                textUnderlineOffset: "1px",
+              }}
+            >
+              Forgot Your Password ?
+            </Typography>
+          </Box>
+          <Button
+            fullWidth
+            sx={{
+              height: 60,
+              backgroundColor: "#1D8D94",
+              boxShadow: "0px 0px 20px 0px #1D8D9480",
+              color: "white",
+              fontWeight: "bold",
+              fontSize: "16px",
+              borderRadius: 2,
+              mb: 2.5,
+              mt: 3.5 ,
+              textTransform: "none",
+              transition: "all 0.3s ease-out",
+              "&:hover": {
+                transform: "scale(1.02)",
+                boxShadow: "0px 0px 25px 0px #1D8D9480",
+                backgroundColor: "#1A7A7D",
+              },
+              "&:active": {
+                transform: "scale(0.98)",
+              },
+            }}
+          >
+            Login
+          </Button>
+          <Typography
+            sx={{
+              fontFamily: "Niramit, sans-serif",
+              fontWeight: 700,
+              fontStyle: "normal",
+               fontSize:{xs:'12px' , sm:'14px' , lg:'16px'},
+              lineHeight: "100%",
+              letterSpacing: "0%",
+              textTransform: "capitalize",
+              leadingTrim: "none",
+              color: "#ABABAB",
+              textAlign: "center",
+            }}
+          >
+            dont have an account?{" "}
+            <Link
+              href="/auth/register"
+              underline="hover"
+              sx={{
+                fontWeight: 700,
+                color: "#1D8D94",
+                cursor: "pointer",
+              }}
+            >
+              register
+            </Link>
+          </Typography>
+        </Box>
+      </Card>
+    </Box>
+  );
+};
+
+export default LoginUI;
