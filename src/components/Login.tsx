@@ -183,7 +183,7 @@ const LoginUI = () => {
             }}
           >
             <CustomizedCheckbox></CustomizedCheckbox>
-
+            <Link href='/auth/forgetPassword'>
             <Typography
               variant="body2"
               sx={{
@@ -197,6 +197,7 @@ const LoginUI = () => {
             >
               Forgot Your Password ?
             </Typography>
+            </Link>
           </Box>
           <Button
             fullWidth

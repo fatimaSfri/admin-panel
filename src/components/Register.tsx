@@ -223,7 +223,7 @@ const RegisterUI = () => {
             <Box> 
               <TextField
                 fullWidth
-                placeholder="Please Enter Your Email"
+                placeholder="Please Enter Your Password"
                 type={showPassword ? "text" : "password"}
                 variant="outlined"
                 value={password}
@@ -311,7 +311,7 @@ const RegisterUI = () => {
           >
              Have An Account?{" "}
             <Link
-              href="/auth/register"
+              href="/auth/login"
               underline="hover"
               sx={{
                 fontWeight: 700,

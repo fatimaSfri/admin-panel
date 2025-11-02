@@ -6,7 +6,7 @@ function CopyrightFooter() {
     maxWidth='lg'
       sx={{
        width:'86%',
-       mx:"auto"
+       mx:"auto",
         }}
     >
       {/* <Container  sx={{ width: '100%' }}>  */}
