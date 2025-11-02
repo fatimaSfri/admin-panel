@@ -9,7 +9,6 @@ import { PersistGate } from "redux-persist/integration/react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import RegisterUI from "./components/Register";
 import CopyrightFooter from "./components/Footer";
-import Test from "./components/Test";
 import ForgetPassword from "./components/ForgetPassword";
 import ChangePassword from "./components/ChangePassword"
 
@@ -32,7 +31,6 @@ const App = () => {
                    <Route index element={<ForgetPassword/>}/>
                    <Route  path="ChangePass" element={<ChangePassword/>}/>
                 </Route>
-                <Route path="/test" element={<Test />} />
               </Routes>
               <CopyrightFooter></CopyrightFooter>
             </Stack>
