@@ -89,9 +89,9 @@
 import { Box, Typography, Link } from "@mui/material";
 import { useFormik } from 'formik';
 import { toFormikValidationSchema } from 'zod-formik-adapter';
-import { loginSchema,type LoginData } from '../validation/schema'; 
+import { loginSchema,type LoginData } from '../schemas/login'; 
 import CustomizedCheckbox from "./CustomCheckbox";
-import EmailInput from "./EmailInput";
+import CustomInput from "./CustomInput";
 import { PasswordInput } from "./PasswordInput";
 import { CustomButton } from "./CustomButton";
 import CustomQuestion from "./CustomQuestion";
@@ -100,42 +100,43 @@ import Parent from "./Parent";
 import { useState } from "react";
 
 const LoginUI = () => {
-  const formik = useFormik<LoginData>({ // type اضافه شد!
-    initialValues: { email: '' }, // password اضافه شد
+  const formik = useFormik<LoginData>({ 
+    initialValues: { email: '' , password:''}, 
     validationSchema: toFormikValidationSchema(loginSchema),
-    onSubmit: (values) => { // اینجا onSubmit هست – بعداً توضیح!
+    onSubmit: (values) => { 
       console.log('ورود کردی:', values);
-      // dispatch RTK یا API بزن
+      
     },
   });
 
   // showPassword رو می‌تونی به formik اضافه کنی، اما فعلاً local نگه دار (یا به state formik ببر)
   const [showPassword, setShowPassword] = useState(false);
-
+ 
   return (
     <Parent>
       {/* title */}
       <CustomTitle text="login" />
       
       {/* Email input – error/helper از formik */}
-      <EmailInput
+      <CustomInput
         value={formik.values.email}
         name="email"
         onChange={formik.handleChange}
-        error={formik.touched.email && Boolean(formik.errors.email)}
+        error={Boolean(formik.errors.email)}
         helperText={formik.errors.email}
       />
       
       {/* Password input – به formik وصل! */}
-      {/* <PasswordInput
+      <PasswordInput
         label="Password :"
-        value={formik.values.password} // از formik!
-        onChange={formik.handleChange} // handleChange جادویی!
+        name='name'
+        value={formik.values.password} 
+        onChange={formik.handleChange} 
         error={formik.touched.password && Boolean(formik.errors.password)}
         helperText={formik.touched.password && formik.errors.password ? "The Password Is Incorrect" : ""}
         showPassword={showPassword}
         onTogglePassword={() => setShowPassword(!showPassword)}
-      /> */}
+      />
       
       {/* checkbox */}
       <Box sx={{ display: "flex", alignItems: "center", justifyContent: "space-between", width: "100%" }}>
@@ -158,7 +159,7 @@ const LoginUI = () => {
       </Box>
       
       {/* Button – onClick به handleSubmit وصل! */}
-      <CustomButton label="Login" onClick={formik.handleSubmit} /> {/* جادو: submit می‌شه! */}
+      <CustomButton label="Login" onClick={formik.handleSubmit} /> 
       
       {/* custom text */}
       <CustomQuestion question="dont have an account?" answer="register" src="/auth/register" />

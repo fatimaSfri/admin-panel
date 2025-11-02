@@ -1,12 +1,12 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 import { persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
-import autoMergeLevel2 from "redux-persist/lib/stateReconciler/autoMergeLevel2";  // این import رو اضافه کن!
+import autoMergeLevel2 from "redux-persist/lib/stateReconciler/autoMergeLevel2";  
 
 export interface UserInfo {
   userName: string;
   email: string;
-  password: string;  // حتماً string!
+  password: string;  
 }
 
 type UserState = {
@@ -22,20 +22,20 @@ const userSlice = createSlice({
   initialState,
   reducers: {
     addUser(state, action: PayloadAction<UserInfo>) {
-      state.items = [...state.items, action.payload];  // spread – fix برای array merge
+      state.items = [...state.items, action.payload];  
     }
   }
 });
 
-// persist config per-slice (fix برای nested)
+
 const persistConfig = {
   key: 'user',
   storage,
-  stateReconciler: autoMergeLevel2,  // merge nested array/object – fix اصلی!
-  whitelist: ['items'],  // فقط items رو persist کن (نه کل state)
+  stateReconciler: autoMergeLevel2,  
+  whitelist: ['items'],  
 };
 
-const userReducer = persistReducer<UserState>(persistConfig, userSlice.reducer);  // export persisted reducer
+const userReducer = persistReducer<UserState>(persistConfig, userSlice.reducer);  
 
 export const { addUser } = userSlice.actions;
-export default userReducer;  // حالا persisted رو export کن
+export default userReducer;  

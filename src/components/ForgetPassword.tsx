@@ -1,4 +1,4 @@
-import EmailInput from "./EmailInput";
+import EmailInput from "./CustomInput";
 import { CustomButton } from "./CustomButton";
 import CustomTitle from "./CustomTitle";
 import Parent from "./Parent";

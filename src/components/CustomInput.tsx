@@ -82,29 +82,33 @@ import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 interface EmailInputProps {
   value: string;
   name: string;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void; // type دقیق!
-  error?: boolean; // از formik
-  helperText?: string; // از formik.errors
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void; 
+  error?: boolean; 
+  helperText?: string;
+  lable?:string;
+  placeholder?:string; 
 }
 
-const EmailInput: React.FC<EmailInputProps> = ({
+const CustomInput: React.FC<EmailInputProps> = ({
   value,
   name,
   onChange,
-  error = false, // default false
-  helperText = "The Email Is Incorrect",
+  error = false,
+  helperText ,
+  lable='Email :',
+  placeholder='Please Enter Your Email'
 }) => {
   return (
     <Box>
       <Typography sx={{ mb: 2, fontSize: { xs: '14px', lg: '16px' }, color: "#ABABAB", fontWeight: "bold" }}>
-        Email :
+       {lable}
       </Typography>
       <TextField
-        value={value}
+        value={value ?? ''}
         name={name}
         onChange={onChange}
         fullWidth
-        placeholder="Please Enter Your Email"
+        placeholder={placeholder}
         variant="outlined"
         error={error}
         helperText={error ? helperText : ""}
@@ -117,9 +121,6 @@ const EmailInput: React.FC<EmailInputProps> = ({
               color: "#fff",
               opacity: 1,
               fontSize: { xs: '12px', lg: '14px' },
-            },
-            '& .MuiFormHelperText-root': {
-              fontSize: { xs: '1px', lg: '1px' } // اگه لازم نیست، بردار
             },
             fontSize: { xs: '12px', lg: '14px' },
             p: "2px",
@@ -142,4 +143,4 @@ const EmailInput: React.FC<EmailInputProps> = ({
   );
 };
 
-export default EmailInput;
+export default CustomInput;

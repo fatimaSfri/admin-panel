@@ -11,6 +11,7 @@ import RegisterUI from "./components/Register";
 import CopyrightFooter from "./components/Footer";
 import ForgetPassword from "./components/ForgetPassword";
 import ChangePassword from "./components/ChangePassword"
+import Welcome from "./components/Welcome";
 
 const App = () => {
   return (
@@ -31,6 +32,7 @@ const App = () => {
                    <Route index element={<ForgetPassword/>}/>
                    <Route  path="ChangePass" element={<ChangePassword/>}/>
                 </Route>
+                <Route path="/auth/home" element={<Welcome />} />
               </Routes>
               <CopyrightFooter></CopyrightFooter>
             </Stack>
