@@ -97,17 +97,29 @@ import { CustomButton } from "./CustomButton";
 import CustomQuestion from "./CustomQuestion";
 import CustomTitle from "./CustomTitle";
 import Parent from "./Parent";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useInfoDispatch , useInfoSelector } from "../store/hooks";
+import { loginUser } from "../store/UserSlice"; 
+import type { RootState } from "../store/Store";
+import { useNavigate } from "react-router-dom";
 
 const LoginUI = () => {
+  const dispatch = useInfoDispatch();
+  const {currentUser, errors } = useInfoSelector((state: RootState) => state.user);
+   const navigate = useNavigate();
+
   const formik = useFormik<LoginData>({ 
-    initialValues: { email: '' , password:''}, 
+    initialValues: { email: '', password: '', rememberMe: false }, 
     validationSchema: toFormikValidationSchema(loginSchema),
     onSubmit: (values) => { 
-      console.log('ورود کردی:', values);
-      
+      dispatch(loginUser(values));
     },
   });
+  useEffect(() => {
+  if(currentUser && Object.keys(errors).length === 0){
+    navigate("/auth/home");
+  }
+}, [currentUser, errors, navigate]);
 
   // showPassword رو می‌تونی به formik اضافه کنی، اما فعلاً local نگه دار (یا به state formik ببر)
   const [showPassword, setShowPassword] = useState(false);
@@ -122,25 +134,28 @@ const LoginUI = () => {
         value={formik.values.email}
         name="email"
         onChange={formik.handleChange}
-        error={Boolean(formik.errors.email)}
-        helperText={formik.errors.email}
+        error={Boolean(formik.errors.email || errors.email)}
+        helperText={formik.errors.email || errors.email}
       />
       
       {/* Password input – به formik وصل! */}
       <PasswordInput
         label="Password :"
-        name='name'
+        name='password'
         value={formik.values.password} 
         onChange={formik.handleChange} 
-        error={formik.touched.password && Boolean(formik.errors.password)}
-        helperText={formik.touched.password && formik.errors.password ? "The Password Is Incorrect" : ""}
+        error={Boolean(formik.errors.password || errors.password)}
+        helperText={formik.errors.password || errors.password}
         showPassword={showPassword}
         onTogglePassword={() => setShowPassword(!showPassword)}
       />
       
       {/* checkbox */}
       <Box sx={{ display: "flex", alignItems: "center", justifyContent: "space-between", width: "100%" }}>
-        <CustomizedCheckbox />
+        <CustomizedCheckbox 
+         name="rememberMe"
+        checked={formik.values.rememberMe}
+        onChange={formik.handleChange} />
         <Link href="/auth/forgetPassword">
           <Typography
             variant="body2"

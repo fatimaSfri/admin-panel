@@ -8,7 +8,7 @@ export const loginSchema = z.object({
     (val) => val ?? '',
     z.string().min(6, 'پسورد حداقل ۶ حرف باشه، قهرمان!')
   ),
-
+ rememberMe: z.boolean().optional().default(false),
 });
 
 export type LoginData = z.infer<typeof loginSchema>;

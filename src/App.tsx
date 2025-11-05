@@ -25,7 +25,7 @@ const App = () => {
             >
               <Header></Header>
               <Routes>
-                  <Route path="/" element={<LoginUI />} />
+                  <Route path="/" element={<RegisterUI />} />
                 <Route path="/auth/login" element={<LoginUI />} />
                 <Route path="/auth/register" element={<RegisterUI />} />
                 <Route path="/auth/forgetPassword" >

@@ -138,11 +138,22 @@ function CustomCheckbox(props: CheckboxProps) {
   );
 }
 
+interface CustomizedCheckboxProps {
+  name: string;
+  checked: boolean;
+  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+}
 
-export default function CustomizedCheckbox() {
+export default function CustomizedCheckbox({
+  name,
+  checked,
+  onChange,
+}: CustomizedCheckboxProps) {
   return (
     <FormControlLabel
-      control={<CustomCheckbox />}
+      control={<CustomCheckbox name={name}
+          checked={checked} 
+          onChange={onChange} />}
       label="Keep Me Login "
       sx={{ color: "#ABABAB",
       '& .MuiFormControlLabel-label': {
