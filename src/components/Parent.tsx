@@ -27,6 +27,7 @@ const Parent:React.FC<WrapperProps> = ({
           backdropFilter: "blur(20px)",
           borderRadius: 10,
           mx: "auto",
+          py: 5,
         }}
       >
         <Box
@@ -36,7 +37,6 @@ const Parent:React.FC<WrapperProps> = ({
             justifyContent: "center",
             gap: 2,
             px: 6,
-            py: 4,
           }}
         >
           {children}

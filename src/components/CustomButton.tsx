@@ -10,7 +10,7 @@ interface CustomButtonProps extends Omit<ButtonProps, 'sx' | 'children'> {
 export const CustomButton: React.FC<CustomButtonProps> = ({ 
   label, 
   mt = 2.5, 
-  mb = 2.5, 
+  mb = 2, 
   onClick, 
   ...props 
 }) => (
