@@ -57,7 +57,7 @@ export default function Header() {
                 width: { xs: 40, lg: 56 , xl:68 },
                 height: "auto",
               }}
-              src="../../src/assets/img/PMUSDT-logo.svg"
+              src="/img/PMUSDT.svg"
               alt=" logo"
             />
             <Typography
