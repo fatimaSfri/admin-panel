@@ -2,6 +2,7 @@ import { useState } from "react";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import PMUSDT from '../assets/img/logo.png';
+import vector from '../assets/img/Vector.svg'
 import {
   AppBar,
   Box,
@@ -14,7 +15,7 @@ import {
   CardMedia,
   Link,
 } from "@mui/material";
-import AccountBoxOutlinedIcon from "@mui/icons-material/AccountBoxOutlined";
+
 
 const pages = ["Home", "About Us", "Contact Us", "Blog", "FAQ"];
 
@@ -69,8 +70,7 @@ export default function Header() {
                 fontSize: { xs: 16, lg: 20 },
                 lineHeight: "100%",
                 letterSpacing: "20%",
-                background:
-                  "linear-gradient(89.99deg, #1D8D94 30.54%, #99D9A6 99.99%)",
+                background:"linear-gradient(89.99deg, #1D8D94 30.54%, #99D9A6 99.99%)",
                 backgroundClip: "text",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
@@ -123,9 +123,7 @@ export default function Header() {
               alignItems: "center ",
             }}
           >
-            <AccountBoxOutlinedIcon
-              sx={{ borderRadius: 20, color: "inherit", mr: 0.5 }}
-            />
+            <Box component="img" src={vector} alt="icon" sx={{mr: 0.5}} />
             {Logins.map((page, index) => (
               <Box
                 key={page.name}

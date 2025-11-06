@@ -1,7 +1,7 @@
 import { Box, TextField, Typography, InputAdornment, IconButton } from '@mui/material';
 import { useState } from 'react';
-import RemoveRedEyeOutlinedIcon from '@mui/icons-material/RemoveRedEyeOutlined';
-import VisibilityOffOutlinedIcon from '@mui/icons-material/VisibilityOffOutlined';
+import eyes from "../assets/img/eyes.svg"
+import eyesRed from "../assets/img/eyesRed.svg"
 
 interface PasswordInputProps {
   label?: string;
@@ -29,7 +29,7 @@ export const PasswordInput: React.FC<PasswordInputProps> = ({
   helperText = "The Password Is Incorrect",
   strength,
   showStrength = false,
-  showToggle = true, 
+  showToggle = false, 
   showPassword: externalShowPassword,
   onTogglePassword: externalOnToggle,
   name
@@ -49,7 +49,7 @@ export const PasswordInput: React.FC<PasswordInputProps> = ({
   const endAdornment = showToggle ? (
     <InputAdornment position="end">
       <IconButton onClick={togglePassword} sx={iconSx}>
-        {currentShowPassword ? <VisibilityOffOutlinedIcon /> : <RemoveRedEyeOutlinedIcon />}
+        <Box component="img" src={error ? eyesRed : eyes} alt="icon" sx={{mr: 0.5 }} />
       </IconButton>
     </InputAdornment>
   ) : null;
@@ -58,15 +58,15 @@ export const PasswordInput: React.FC<PasswordInputProps> = ({
     <Box>
       {showStrength && strength ? (
         <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
-          <Typography sx={{ mb: 2, fontSize: { xs: '14px', lg: '16px' }, color: "#ABABAB", fontWeight: "bold" }}>
+          <Typography sx={{ mb: 2, fontSize: { xs: '14px', lg: '16px' }, color: "#ABABAB", fontFamily:"NiramitBold", }}>
             {label}
           </Typography>
-          <Typography sx={{ fontSize: { xs: '14px', lg: '16px' }, color: strength === 'Very Weak' ? '#F66066' : strength === 'Weak' ? '#FF6600' : '#6EC207', fontWeight: 'bold' }}>
+          <Typography sx={{ fontSize: { xs: '14px', lg: '16px' }, color: strength === 'Very Weak' ? '#F66066' : strength === 'Weak' ? '#FF6600' : '#6EC207', fontFamily:"NiramitBold", }}>
             {strength}
           </Typography>
         </Box>
       ) : (
-        <Typography sx={{ mb: 2, fontSize: { xs: '14px', lg: '16px' }, color: "#ABABAB", fontWeight: "bold" }}>
+        <Typography sx={{ mb: 2, fontSize: { xs: '14px', lg: '16px' }, color: "#ABABAB", fontFamily:"NiramitBold", }}>
           {label}
         </Typography>
       )}
@@ -89,13 +89,13 @@ export const PasswordInput: React.FC<PasswordInputProps> = ({
             color: "#fff",
             fontSize: { xs: '12px', lg: '14px' },
             p: "2px",
-            "& input::placeholder": { color: "#fff", opacity: 1, fontSize: { xs: '12px', lg: '14px' }, fontWeight: 'bold' },
+            "& input::placeholder": { color: "#fff", opacity: 1, fontSize: { xs: '12px', lg: '14px' }, fontFamily:"NiramitBold",},
           },
           endAdornment, 
         }}
         sx={{
           "& .MuiOutlinedInput-root": {
-            "& fieldset": { border: error ? "2px solid red" : "none" },
+            "& fieldset": { border: error ? "2px solid #F66066" : "none" },
             "&.Mui-focused fieldset": { borderColor: error ? '#F66066' : 'none' },
           },
           "& .MuiFormHelperText-root.Mui-error": { 

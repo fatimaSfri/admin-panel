@@ -13,14 +13,10 @@ const CustomTitle:React.FC<Title> = ({
   return (
      <Typography
             sx={{
-              fontFamily: "Niramit, sans-serif",
-              fontWeight: 700,
-              fontStyle: "normal",
+              fontFamily: "NiramitBold",
               fontSize: { xs: "30px", lg: "36px" },
-              lineHeight: "100%",
-              letterSpacing: "0%",
               textTransform: "capitalize",
-              background: "linear-gradient(60deg, #1D8D94 30%, #99D9A6 70%)",
+              background:"linear-gradient(91.79deg, #1D8D94 2.58%, #91D2A3 126.11%)",
               backgroundClip: "text",
               WebkitBackgroundClip: "text",
               WebkitTextFillColor: "transparent",

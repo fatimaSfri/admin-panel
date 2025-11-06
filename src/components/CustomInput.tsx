@@ -24,7 +24,7 @@ const CustomInput: React.FC<EmailInputProps> = ({
 }) => {
   return (
     <Box>
-      <Typography sx={{ mb: 2, fontSize: { xs: '14px', lg: '16px' }, color: "#ABABAB", fontWeight: "bold" }}>
+      <Typography sx={{ mb: 2, fontSize: { xs: '14px', lg: '16px' }, color: "#ABABAB",  fontFamily:"NiramitBold", }}>
        {lable}
       </Typography>
       <TextField
@@ -46,7 +46,7 @@ const CustomInput: React.FC<EmailInputProps> = ({
               color: "#fff",
               opacity: 1,
               fontSize: { xs: '12px', lg: '14px' },
-              fontWeight: 'bold'
+              fontFamily:"NiramitBold",
             },
             fontSize: { xs: '12px', lg: '14px' },
             p: "2px",

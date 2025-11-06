@@ -1,4 +1,4 @@
-import { Box, Typography, Link } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { useFormik } from "formik";
 import { toFormikValidationSchema } from "zod-formik-adapter";
 import { loginSchema, type LoginData } from "../schemas/login";
@@ -14,6 +14,7 @@ import { useInfoDispatch, useInfoSelector } from "../store/hooks";
 import { loginUser } from "../store/UserSlice";
 import type { RootState } from "../store/Store";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const LoginUI = () => {
   const dispatch = useInfoDispatch();
@@ -75,6 +76,7 @@ const LoginUI = () => {
         showPassword={showPassword}
         onTogglePassword={() => setShowPassword(!showPassword)}
         onBlur={formik.handleBlur}
+        showToggle={true} 
       />
 
       {/* checkbox */}
@@ -91,14 +93,14 @@ const LoginUI = () => {
           checked={formik.values.rememberMe}
           onChange={formik.handleChange}
         />
-        <Link href="/auth/forgetPassword">
+        <Link to="/auth/forgetPassword">
           <Typography
             variant="body2"
             sx={{
               fontSize: { xs: "12px", sm: "14px", lg: "16px" },
               color: "#1D8D94",
               cursor: "pointer",
-              fontWeight: "bold",
+              fontFamily:"NiramitBold",
               textDecoration: "underline",
               textUnderlineOffset: "1px",
             }}

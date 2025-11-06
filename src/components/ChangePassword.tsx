@@ -10,6 +10,7 @@ import { resetPassword } from "../store/UserSlice";
 import { useNavigate } from "react-router-dom";
 import { useInfoDispatch } from "../store/hooks";
 
+
 const ChangePassword = () => {
  const dispatch = useInfoDispatch();
   const navigate = useNavigate();

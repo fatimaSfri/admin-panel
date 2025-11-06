@@ -15,18 +15,18 @@ const Parent:React.FC<WrapperProps> = ({
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        py: 4,
+        minHeight:"100vh",
       }}
     >
       <Card
         elevation={0}
         sx={{
-          width: { xs: "80%", sm: "560px" },
+          width: "100%",
+          maxWidth:"560px",
           backgroundColor: "rgba(250, 250, 250, 0.025)",
           backdropFilter: "blur(20px)",
           borderRadius: 10,
-          px: { xs: 2, lg: 6 },
-          py: 8,
+          mx: "auto",
         }}
       >
         <Box
@@ -35,6 +35,8 @@ const Parent:React.FC<WrapperProps> = ({
             flexDirection: "column",
             justifyContent: "center",
             gap: 2,
+            px: 6,
+            py: 4,
           }}
         >
           {children}

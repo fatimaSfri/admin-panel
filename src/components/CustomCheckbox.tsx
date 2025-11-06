@@ -77,7 +77,7 @@ export default function CustomizedCheckbox({
       label="Keep Me Login "
       sx={{ color: "#ABABAB",
       '& .MuiFormControlLabel-label': {
-      fontWeight: 'bold',
+      fontFamily:"NiramitBold",
       fontSize:{xs:'12px' , sm:'14px' , lg:'16px'}
     }, }}
     />

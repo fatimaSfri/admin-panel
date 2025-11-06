@@ -1,3 +1,18 @@
+
+@font-face {
+  font-family: 'Niramit';
+  src: url('../src/assets/fonts/Niramit-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'NiramitBold';
+  src: url('../src/assets/fonts/Niramit-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+
 * {
     margin: 0;
 }

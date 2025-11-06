@@ -18,11 +18,11 @@ export const CustomButton: React.FC<CustomButtonProps> = ({
     fullWidth
     onClick={onClick}
     sx={{
+      fontFamily:"NiramitBold",
       height: 60,
       backgroundColor: "#1D8D94",
       boxShadow: "0px 0px 20px 0px #1D8D9480",
       color: "white",
-      fontWeight: "bold",
       fontSize: "16px",
       borderRadius: 2,
       mb,

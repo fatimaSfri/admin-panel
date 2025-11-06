@@ -22,7 +22,6 @@ function CopyrightFooter() {
             color="#ABABAB"
             sx={{ 
                fontSize:{xs:'10px' , lg:'12px'},
-              fontWeight: '400', 
             }}
           >
            Copyright © 2024 Repayment. All Rights Reserved
