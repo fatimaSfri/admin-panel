@@ -47,7 +47,7 @@ export default function Header() {
         >
           <Stack
             direction="row"
-            spacing={1}
+            spacing={0.5}
             alignItems="center"
             sx={{
               padding: 2,
