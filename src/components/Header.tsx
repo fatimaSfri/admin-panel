@@ -54,7 +54,7 @@ export default function Header() {
             <CardMedia
               component="img"
               sx={{
-                width: { xs: 40, lg: 68 },
+                width: { xs: 40, lg: 56 , xl:68 },
                 height: "auto",
               }}
               src="../../src/assets/img/logo.svg"

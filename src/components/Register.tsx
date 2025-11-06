@@ -86,7 +86,7 @@ const RegisterUI: React.FC = () => {
           value={formik.values.password}
           onChange={handlePasswordChange}
           error={formik.touched.password && Boolean(formik.errors.password)}
-          helperText={formik.touched.password && formik.errors.password ? "The Password Is Incorrect" : ""}
+          helperText={formik.touched.password && formik.errors.password ? "Your password is too weak" : ""}
           showStrength={true}
           strength={strength}
           showPassword={showPasswordStrength}
