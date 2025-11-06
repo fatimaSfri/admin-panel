@@ -1,10 +1,3 @@
-declare const process: {
-  env: {
-    PUBLIC_URL: string;
-    REACT_APP_BASE_URL: string;
-  };
-};
-
 import { Stack } from "@mui/material";
 import { ThemeProvider } from "@mui/material/styles";
 import theme from "./components/Theme";
@@ -22,7 +15,7 @@ import Welcome from "./components/Welcome";
 
 const App = () => {
   return (
-    <Router basename={process.env.REACT_APP_BASE_URL || '/'} >
+    <Router>
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
           <ThemeProvider theme={theme}>
