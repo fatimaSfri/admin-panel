@@ -9,7 +9,6 @@ function CopyrightFooter() {
        mx:"auto",
         }}
     >
-      {/* <Container  sx={{ width: '100%' }}>  */}
         <Box
           sx={{
             borderTop: '1px solid #2E3E59', 
@@ -29,7 +28,6 @@ function CopyrightFooter() {
            Copyright © 2024 Repayment. All Rights Reserved
           </Typography>
         </Box>
-      {/* </Container> */}
     </Box>
   );
 }

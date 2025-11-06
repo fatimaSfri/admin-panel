@@ -1,16 +1,16 @@
 import { z } from 'zod';
 
 export const registerSchema = z.object({
-  name: z.preprocess((val) => val ?? '', z.string().min(1, 'اسمتو وارد کن')),
+  name: z.preprocess((val) => val ?? '', z.string().min(1, 'Please Enter Your Name')),
   email: z.preprocess(
     (val) => val ?? '',
     z.string()
-      .min(1, 'ایمیل اجباریه، خالی نزن!')
-      .email('ایمیلت غلطه، فرمت درست بنویس!')
+      .min(1, 'Please Enter Your Email')
+      .email('The Email Is Incorrect')
   ),
   password: z.preprocess(
     (val) => val ?? '',
-    z.string().min(6, 'پسورد حداقل ۶ حرف باشه، قهرمان!')
+    z.string().min(6, 'Your password is too weak.')
   ),
 });
 

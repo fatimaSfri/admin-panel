@@ -1,4 +1,3 @@
-// components/atoms/CustomButton.tsx – تازه‌پز و اورجینال!
 import { Button, type ButtonProps } from '@mui/material';
 
 interface CustomButtonProps extends Omit<ButtonProps, 'sx' | 'children'> {

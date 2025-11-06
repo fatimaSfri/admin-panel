@@ -30,7 +30,6 @@ const CustomTitle:React.FC<Title> = ({
             }}
           >
             {text}
-            {/* login */}
           </Typography> 
   )
 }

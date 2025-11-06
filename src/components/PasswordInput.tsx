@@ -8,6 +8,7 @@ interface PasswordInputProps {
   placeholder?: string;
   value?: string;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void;
   error?: boolean;
   helperText?: string;
   strength?: string;
@@ -23,6 +24,7 @@ export const PasswordInput: React.FC<PasswordInputProps> = ({
   placeholder = "Please Enter Your Password",
   value,
   onChange,
+  onBlur,
   error = false,
   helperText = "The Password Is Incorrect",
   strength,
@@ -77,6 +79,7 @@ export const PasswordInput: React.FC<PasswordInputProps> = ({
         variant="outlined"
         value={value}
         onChange={onChange}
+        onBlur={onBlur}
         error={error}
         helperText={error ? helperText : ""}
         InputProps={{
@@ -86,7 +89,7 @@ export const PasswordInput: React.FC<PasswordInputProps> = ({
             color: "#fff",
             fontSize: { xs: '12px', lg: '14px' },
             p: "2px",
-            "& input::placeholder": { color: "#fff", opacity: 1, fontSize: { xs: '12px', lg: '14px' } },
+            "& input::placeholder": { color: "#fff", opacity: 1, fontSize: { xs: '12px', lg: '14px' }, fontWeight: 'bold' },
           },
           endAdornment, 
         }}

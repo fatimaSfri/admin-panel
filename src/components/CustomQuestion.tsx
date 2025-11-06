@@ -39,7 +39,7 @@ const CustomQuestion: React.FC<Content> = ({
               }}
             >
              {answer}
-                 {/* Login
+               {/* Login
               register */}
             </Link>
           </Typography>
