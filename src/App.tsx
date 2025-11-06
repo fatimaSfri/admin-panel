@@ -26,13 +26,13 @@ const App = () => {
               <Header></Header>
               <Routes>
                   <Route path="/" element={<RegisterUI />} />
-                <Route path="/auth/login" element={<LoginUI />} />
-                <Route path="/auth/register" element={<RegisterUI />} />
-                <Route path="/auth/forgetPassword" >
+                <Route path="auth/login" element={<LoginUI />} />
+                <Route path="auth/register" element={<RegisterUI />} />
+                <Route path="auth/forgetPassword" >
                    <Route index element={<ForgetPassword/>}/>
                    <Route  path="ChangePass" element={<ChangePassword/>}/>
                 </Route>
-                <Route path="/auth/home" element={<Welcome />} />
+                <Route path="auth/home" element={<Welcome />} />
               </Routes>
               <CopyrightFooter></CopyrightFooter>
             </Stack>
