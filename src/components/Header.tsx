@@ -1,6 +1,7 @@
 import { useState } from "react";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
+import PMUSDT from '../assets/img/PMUSDT.svg';
 import {
   AppBar,
   Box,
@@ -57,7 +58,7 @@ export default function Header() {
                 width: { xs: 40, lg: 56 , xl:68 },
                 height: "auto",
               }}
-              src="/img/PMUSDT.svg"
+              src={PMUSDT}
               alt=" logo"
             />
             <Typography
