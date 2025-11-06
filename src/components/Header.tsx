@@ -1,7 +1,7 @@
 import { useState } from "react";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
-import PMUSDT from '../assets/img/PMUSDT.svg';
+import PMUSDT from '../assets/img/logo.png';
 import {
   AppBar,
   Box,
