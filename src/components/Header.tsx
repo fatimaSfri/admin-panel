@@ -13,11 +13,15 @@ import {
   Stack,
   Typography,
   CardMedia,
-  Link,
 } from "@mui/material";
+import { Link } from "react-router-dom";
 
-
-const pages = ["Home", "About Us", "Contact Us", "Blog", "FAQ"];
+const pages =
+ [{name:"Home" , src:"/home"} , 
+  {name:"About Us", src:"#"},
+  {name:"Contact Us" , src:"#"},
+  {name:"Blog" , src:"#" },
+  {name:"FAQ" , src:"#"}];
 
 const Logins = [
   { name: "Login", src: "/auth/login" },
@@ -87,13 +91,14 @@ export default function Header() {
             alignItems="center"
           >
             {pages.map((page) => (
+            <Link to={page.src}  key={page.name} >
               <Button
-                key={page}
                 sx={{
                   color: "white",
                   fontSize: { xs: "14px", lg: "16px" },
                   position: "relative",
                   textDecoration: "none",
+                  textTransform: "none",
                   "&::after": {
                     content: '""',
                     position: "absolute",
@@ -111,8 +116,9 @@ export default function Header() {
                   },
                 }}
               >
-                {page}
+                {page.name}
               </Button>
+             </Link>
             ))}
           </Stack>
 
@@ -133,7 +139,7 @@ export default function Header() {
                   alignItems: "center ",
                 }}
               >
-                <Link href={page.src}>
+                <Link to={page.src}>
                   <Button
                     sx={{
                       color: "white",
@@ -194,11 +200,11 @@ export default function Header() {
               >
                 {pages.map((option) => (
                   <MenuItem
-                    key={option}
-                    selected={option === "Home"}
+                    key={option.name}
+                    selected={option.name === "Home"}
                     onClick={handleClose}
                   >
-                    {option}
+                    {option.name}
                   </MenuItem>
                 ))}
               </Menu>

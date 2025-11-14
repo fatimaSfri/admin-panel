@@ -8,13 +8,14 @@ import { PasswordInput } from "./PasswordInput";
 import { CustomButton } from "./CustomButton";
 import CustomQuestion from "./CustomQuestion";
 import CustomTitle from "./CustomTitle";
-import Parent from "./Parent";
+import Parent from "./ParentBox";
 import { useEffect, useState } from "react";
 import { useInfoDispatch, useInfoSelector } from "../store/hooks";
 import { loginUser } from "../store/UserSlice";
 import type { RootState } from "../store/Store";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import ParentForAll from "./ParentForAll";
 
 const LoginUI = () => {
   const dispatch = useInfoDispatch();
@@ -42,6 +43,7 @@ const LoginUI = () => {
   const [showPassword, setShowPassword] = useState(false);
 
   return (
+    <ParentForAll>
     <Parent>
       {/* title */}
       <CustomTitle text="login" />
@@ -120,6 +122,7 @@ const LoginUI = () => {
         src="/auth/register"
       />
     </Parent>
+    </ParentForAll>
   );
 };
 

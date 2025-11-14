@@ -7,12 +7,12 @@ import { PasswordInput } from "./PasswordInput";
 import { CustomButton } from "./CustomButton";
 import CustomQuestion from "./CustomQuestion";
 import CustomTitle from "./CustomTitle";
-import Parent from "./Parent";
+import Parent from "./ParentBox";
 import { useFormik } from 'formik';
 import { toFormikValidationSchema } from 'zod-formik-adapter';
 import { registerSchema, type RegisterData } from '../schemas/register';
 import { useNavigate } from "react-router-dom";
-
+import ParentForAll from "./ParentForAll";
 
 const RegisterUI: React.FC = () => {
   const dispatch = useInfoDispatch();
@@ -54,6 +54,7 @@ const RegisterUI: React.FC = () => {
   };
 
   return (
+    <ParentForAll>
     <Parent>
       <CustomTitle text="Register" />
 
@@ -107,6 +108,7 @@ const RegisterUI: React.FC = () => {
         src="/auth/login"
       />
     </Parent>
+    </ParentForAll>
   );
 };
 

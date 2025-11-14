@@ -1,7 +1,7 @@
 import EmailInput from "./CustomInput";
 import { CustomButton } from "./CustomButton";
 import CustomTitle from "./CustomTitle";
-import Parent from "./Parent";
+import Parent from "./ParentBox";
 import { useFormik } from 'formik';
 import { toFormikValidationSchema } from 'zod-formik-adapter';
 import { ForgetSchema,type ForgetData } from '../schemas/forgetPass'; 
@@ -10,6 +10,7 @@ import type { RootState } from "../store/Store";
 import { checkEmail } from "../store/UserSlice";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import ParentForAll from "./ParentForAll";
 
 const ForgetPassword = () => {
     const navigate = useNavigate();
@@ -31,6 +32,7 @@ const ForgetPassword = () => {
       }
     }, [userForgot,errors, navigate]);
   return (
+    <ParentForAll>
     <Parent>
       {/* custom title */}
       <CustomTitle text="Forget Password" mb={4.5} />
@@ -46,6 +48,7 @@ const ForgetPassword = () => {
       {/* button */}
       <CustomButton label="Confirm" mt={-1.2} mb={2.5} onClick={formik.handleSubmit} />
     </Parent>
+    </ParentForAll>
   );
 };
 

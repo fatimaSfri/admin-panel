@@ -1,0 +1,569 @@
+// // ExchangeBox.tsx
+// import React from "react";
+// import {
+//   Box,
+//   Typography,
+//   TextField,
+//   MenuItem,
+//   Button,
+//   IconButton,
+// } from "@mui/material";
+// import SwapVertIcon from "@mui/icons-material/SwapVert";
+
+// interface Currency {
+//   label: string;
+//   value: string;
+// }
+
+// const currencyOptions: Currency[] = [
+//   { label: "USDT (TRC20)", value: "usdt" },
+//   { label: "Perfect Money", value: "pm" },
+// ];
+
+// const ExchangeBox: React.FC = () => {
+//   // مقدارها به صورت رشته نگهداری میشن تا کاراکترها و متن ورودی کنترل‌پذیر بمونه
+//   const [fromAmount, setFromAmount] = React.useState<string>("1000");
+//   const [toAmount, setToAmount] = React.useState<string>("1000");
+//   const [fromCurrency, setFromCurrency] = React.useState<string>("usdt");
+//   const [toCurrency, setToCurrency] = React.useState<string>("pm");
+
+//   // سوآپ: هم مقدار و هم ارز رو جابه‌جا می‌کنه
+//   const handleSwap = () => {
+//     setFromAmount((prevFrom) => {
+//       setToAmount(prevFrom);
+//       return toAmount;
+//     });
+//     setFromCurrency((prevFromCur) => {
+//       setToCurrency(prevFromCur);
+//       return toCurrency;
+//     });
+//   };
+
+//   // نمونه‌ی تابع ساده برای ساختار قیمتی — در صورت نیاز میشه واقعی کرد
+//   const handleMakeExchange = () => {
+//     // validation ساده
+//     const fromNum = parseFloat(fromAmount || "0");
+//     const toNum = parseFloat(toAmount || "0");
+//     if (!fromNum || fromNum <= 0) {
+//       alert("لطفا مقدار From معتبر وارد کنید.");
+//       return;
+//     }
+//     if (!toNum || toNum <= 0) {
+//       alert("لطفا مقدار To معتبر وارد کنید.");
+//       return;
+//     }
+//     // اینجا میتونی درخواست API بذاری یا منطق تبدیل
+//     alert(`Exchange: ${fromAmount} ${fromCurrency} → ${toAmount} ${toCurrency}`);
+//   };
+
+//   return (
+//     <Box
+//       sx={{
+//         display: "flex",
+//         flexDirection: "column",
+//         alignItems: "center",
+//         gap: 5,
+//         mt: 6,
+//       }}
+//     >
+//       {/* ===== From box ===== */}
+//       <Box
+//         sx={{
+//           width: "420px",
+//           backgroundColor: "rgba(250, 250, 250, 0.025)",
+//           borderRadius: "16px",
+//           padding: "20px",
+//           display: "flex",
+//           flexDirection: "column",
+//           boxShadow: "inset 0 0 10px rgba(255,255,255,0.02)",
+//         }}
+//       >
+//         <Typography sx={{ color: "#ABABAB", fontSize: 14, mb: 1 }}>From :</Typography>
+
+//         <Box sx={{ display: "flex", gap: 1, alignItems: "center" }}>
+//           {/* input عددی */}
+//           <TextField
+//             value={fromAmount}
+//             onChange={(e) => setFromAmount(e.target.value)}
+//             type="number"
+//             variant="outlined"
+//             inputProps={{ inputMode: "numeric", pattern: "[0-9]*", min: 0 }}
+//             sx={{
+//               flex: 1,
+//               "& .MuiOutlinedInput-root": {
+//                 borderRadius: "10px",
+//                 backgroundColor: "#101A23",
+//                 "& fieldset": { borderColor: "#979E9C" },
+//                 "&:hover fieldset": { borderColor: "#1D8D94" },
+//                 "&.Mui-focused fieldset": { borderColor: "#1D8D94" },
+//               },
+//               input: {
+//                 color: "#fff",
+//                 fontWeight: 700,
+//                 padding: "12px 14px",
+//               },
+//             }}
+//           />
+
+//           {/* دراپ‌داون ارز */}
+//           <TextField
+//             select
+//             value={fromCurrency}
+//             onChange={(e) => setFromCurrency(e.target.value)}
+//             variant="outlined"
+//             sx={{
+//               minWidth: 160,
+//               "& .MuiOutlinedInput-root": {
+//                 borderRadius: "10px",
+//                 backgroundColor: "#101A23",
+//                 "& fieldset": { borderColor: "#979E9C" },
+//                 "&:hover fieldset": { borderColor: "#1D8D94" },
+//                 "&.Mui-focused fieldset": { borderColor: "#1D8D94" },
+//               },
+//               "& .MuiSelect-select": {
+//                 color: "#1D8D94",
+//                 fontWeight: 600,
+//                 padding: "12px 10px",
+//               },
+//             }}
+//           >
+//             {currencyOptions.map((c) => (
+//               <MenuItem key={c.value} value={c.value}>
+//                 {c.label}
+//               </MenuItem>
+//             ))}
+//           </TextField>
+//         </Box>
+
+//         <Typography sx={{ color: "#979E9C", fontSize: 12, mt: 1.5 }}>
+//           Min: $100 &nbsp;&nbsp; Max: $4832
+//         </Typography>
+//       </Box>
+
+//       {/* ===== Swap Button (center circular) ===== */}
+//       <IconButton
+//         aria-label="swap"
+//         onClick={handleSwap}
+//         sx={{
+//           width: 48,
+//           height: 48,
+//           borderRadius: "50%",
+//           backgroundColor: "#1D8D94",
+//           boxShadow: "0px 0px 20px 0px #1D8D9480",
+//           color: "#fff",
+//           "&:hover": {
+//             backgroundColor: "#40A578",
+//             boxShadow: "0px 0px 25px 0px #40A57880",
+//           },
+//         }}
+//       >
+//         <SwapVertIcon />
+//       </IconButton>
+
+//       {/* ===== To box ===== */}
+//       <Box
+//         sx={{
+//           width: "420px",
+//           backgroundColor: "rgba(250, 250, 250, 0.025)",
+//           borderRadius: "16px",
+//           padding: "20px",
+//           display: "flex",
+//           flexDirection: "column",
+//           boxShadow: "inset 0 0 10px rgba(255,255,255,0.02)",
+//         }}
+//       >
+//         <Typography sx={{ color: "#ABABAB", fontSize: 14, mb: 1 }}>To :</Typography>
+
+//         <Box sx={{ display: "flex", gap: 1, alignItems: "center" }}>
+//           {/* input عددی */}
+//           <TextField
+//             value={toAmount}
+//             onChange={(e) => setToAmount(e.target.value)}
+//             type="number"
+//             variant="outlined"
+//             inputProps={{ inputMode: "numeric", pattern: "[0-9]*", min: 0 }}
+//             sx={{
+//               flex: 1,
+//               "& .MuiOutlinedInput-root": {
+//                 borderRadius: "10px",
+//                 backgroundColor: "#101A23",
+//                 "& fieldset": { borderColor: "#979E9C" },
+//                 "&:hover fieldset": { borderColor: "#1D8D94" },
+//                 "&.Mui-focused fieldset": { borderColor: "#1D8D94" },
+//               },
+//               input: {
+//                 color: "#fff",
+//                 fontWeight: 700,
+//                 padding: "12px 14px",
+//               },
+//             }}
+//           />
+
+//           {/* دراپ‌داون ارز */}
+//           <TextField
+//             select
+//             value={toCurrency}
+//             onChange={(e) => setToCurrency(e.target.value)}
+//             variant="outlined"
+//             sx={{
+//               minWidth: 160,
+//               "& .MuiOutlinedInput-root": {
+//                 borderRadius: "10px",
+//                 backgroundColor: "#101A23",
+//                 "& fieldset": { borderColor: "#979E9C" },
+//                 "&:hover fieldset": { borderColor: "#1D8D94" },
+//                 "&.Mui-focused fieldset": { borderColor: "#1D8D94" },
+//               },
+//               "& .MuiSelect-select": {
+//                 color: "#1D8D94",
+//                 fontWeight: 600,
+//                 padding: "12px 10px",
+//               },
+//             }}
+//           >
+//             {currencyOptions.map((c) => (
+//               <MenuItem key={c.value} value={c.value}>
+//                 {c.label}
+//               </MenuItem>
+//             ))}
+//           </TextField>
+//         </Box>
+
+//         <Typography sx={{ color: "#979E9C", fontSize: 12, mt: 1.5 }}>
+//           Min: $100 &nbsp;&nbsp; Max: $4832
+//         </Typography>
+//       </Box>
+
+//       {/* ===== Make Exchange button ===== */}
+//       <Button
+//         onClick={handleMakeExchange}
+//         sx={{
+//           mt: 1,
+//           width: 320,
+//           height: 52,
+//           fontWeight: 600,
+//           fontSize: 15,
+//           borderRadius: "10px",
+//           textTransform: "none",
+//           background: "#1D8D94",
+//           boxShadow: "0px 0px 20px 0px #1D8D9480",
+//           color: "#fff",
+//           "&:hover": {
+//             background: "#40A578",
+//             boxShadow: "0px 0px 25px 0px #40A57880",
+//           },
+//         }}
+//       >
+//         Make Exchange
+//       </Button>
+//     </Box>
+//   );
+// };
+
+// export default ExchangeBox;
+
+
+
+import React, { useEffect, useState } from "react";
+import {
+  Box,
+  Typography,
+  TextField,
+  MenuItem,
+  Button,
+  IconButton,
+} from "@mui/material";
+import SwapVertIcon from "@mui/icons-material/SwapVert";
+
+const currencyOptions = [
+  { label: "USDT (TRC20)", value: "usdt", rateToUSD: 1 },
+  { label: "Perfect Money", value: "pm", rateToUSD: 0.98 },
+];
+
+const normalizeNumberString = (s: string) => {
+  if (!s) return "";
+  let t = s.trim();
+  t = t.replace(/[,٬\s\u060C]/g, "");
+  t = t.replace(/[^0-9.\-]/g, "");
+  const parts = t.split(".");
+  if (parts.length > 2) t = parts.shift() + "." + parts.join("");
+  return t;
+};
+const parseNumber = (s: string) => {
+  const n = Number(normalizeNumberString(s));
+  return Number.isFinite(n) ? n : NaN;
+};
+const toFixedTrim = (n: number, decimals = 6) =>
+  n.toFixed(decimals).replace(/\.?0+$/, "");
+
+const ExchangeBox: React.FC = () => {
+  const [fromAmount, setFromAmount] = useState<string>("1000");
+  const [toAmount, setToAmount] = useState<string>("1000");
+  const [fromCurrency, setFromCurrency] = useState(currencyOptions[0]);
+  const [toCurrency, setToCurrency] = useState(currencyOptions[1]);
+
+  const convertNumber = (
+    valueStr: string,
+    from: typeof fromCurrency,
+    to: typeof toCurrency
+  ) => {
+    const valueNum = parseNumber(valueStr);
+    if (Number.isNaN(valueNum)) return "";
+    const rawResult = (valueNum * from.rateToUSD) / to.rateToUSD;
+    return toFixedTrim(rawResult, 6);
+  };
+
+  useEffect(() => {
+    if (!fromAmount) {
+      setToAmount("");
+      return;
+    }
+    const result = convertNumber(fromAmount, fromCurrency, toCurrency);
+    setToAmount(result);
+  }, [fromAmount, fromCurrency, toCurrency]);
+
+  const handleSwap = () => {
+    const nextFrom = toCurrency;
+    const nextTo = fromCurrency;
+    const nextFromAmount = toAmount || fromAmount;
+    const nextToAmount = nextFromAmount
+      ? convertNumber(nextFromAmount, nextFrom, nextTo)
+      : "";
+
+    setFromCurrency(nextFrom);
+    setToCurrency(nextTo);
+    setFromAmount(nextFromAmount);
+    setToAmount(nextToAmount);
+  };
+
+  const handleMakeExchange = () => {
+    alert(
+      `Exchange: ${fromAmount} ${fromCurrency.label} → ${toAmount} ${toCurrency.label}`
+    );
+  };
+
+  return (
+    <Box
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        gap: 5,
+        mt: 6,
+        fontFamily: "Inter, sans-serif",
+      }}
+    >
+      {/* From box */}
+      <Box
+        sx={{
+          width: 420,
+          background: "rgba(255,255,255,0.02)",
+          borderRadius: "16px",
+          padding: "20px 22px",
+          display: "flex",
+          flexDirection: "column",
+          boxShadow:
+            "inset 0 1px 2px rgba(255,255,255,0.05), inset 0 -1px 3px rgba(0,0,0,0.5)",
+          backdropFilter: "blur(12px)",
+        }}
+      >
+        <Typography sx={{ color: "#ABABAB", fontSize: 14, mb: 1 }}>
+          From :
+        </Typography>
+
+        <Box sx={{ display: "flex", gap: 1, alignItems: "center" }}>
+          <TextField
+            value={fromAmount}
+            onChange={(e) => setFromAmount(normalizeNumberString(e.target.value))}
+            type="text"
+            variant="outlined"
+            sx={{
+              flex: 1,
+              "& .MuiOutlinedInput-root": {
+                borderRadius: "12px",
+                backgroundColor: "#101A23",
+                color: "#fff",
+                boxShadow: "inset 0 2px 3px rgba(0,0,0,0.6)",
+                transition: "0.3s",
+                "& fieldset": { borderColor: "#2A2F34" },
+                "&:hover fieldset": { borderColor: "#1D8D94" },
+                "&.Mui-focused fieldset": { borderColor: "#1D8D94" },
+              },
+              input: {
+                color: "#fff",
+                fontWeight: 600,
+                padding: "12px 14px",
+              },
+            }}
+          />
+
+          <TextField
+            select
+            value={fromCurrency.value}
+            onChange={(e) =>
+              setFromCurrency(
+                currencyOptions.find((c) => c.value === e.target.value)!
+              )
+            }
+            variant="outlined"
+            sx={{
+              minWidth: 160,
+              "& .MuiOutlinedInput-root": {
+                borderRadius: "12px",
+                backgroundColor: "#101A23",
+                "& fieldset": { borderColor: "#2A2F34" },
+                "&:hover fieldset": { borderColor: "#1D8D94" },
+                "&.Mui-focused fieldset": { borderColor: "#1D8D94" },
+              },
+              "& .MuiSelect-select": {
+                color: "#1D8D94",
+                fontWeight: 600,
+                padding: "12px 10px",
+              },
+            }}
+          >
+            {currencyOptions.map((c) => (
+              <MenuItem key={c.value} value={c.value}>
+                {c.label}
+              </MenuItem>
+            ))}
+          </TextField>
+        </Box>
+
+        <Typography sx={{ color: "#979E9C", fontSize: 12, mt: 1.5 }}>
+          Min: $100 &nbsp;&nbsp; Max: $4832
+        </Typography>
+      </Box>
+
+      {/* Swap button */}
+      <IconButton
+        aria-label="swap"
+        onClick={handleSwap}
+        sx={{
+          width: 54,
+          height: 54,
+          borderRadius: "50%",
+          background: "linear-gradient(135deg, #1D8D94, #40A578)",
+          boxShadow: "0px 0px 25px 0px rgba(64,165,120,0.4)",
+          color: "#fff",
+          transition: "0.3s",
+          "&:hover": {
+            transform: "scale(1.1)",
+            boxShadow: "0px 0px 30px 0px rgba(64,165,120,0.6)",
+          },
+        }}
+      >
+        <SwapVertIcon />
+      </IconButton>
+
+      {/* To box */}
+      <Box
+        sx={{
+          width: 420,
+          background: "rgba(255,255,255,0.02)",
+          borderRadius: "16px",
+          padding: "20px 22px",
+          display: "flex",
+          flexDirection: "column",
+          boxShadow:
+            "inset 0 1px 2px rgba(255,255,255,0.05), inset 0 -1px 3px rgba(0,0,0,0.5)",
+          backdropFilter: "blur(12px)",
+        }}
+      >
+        <Typography sx={{ color: "#ABABAB", fontSize: 14, mb: 1 }}>To :</Typography>
+
+        <Box sx={{ display: "flex", gap: 1, alignItems: "center" }}>
+          <TextField
+            value={toAmount}
+            type="text"
+            variant="outlined"
+            inputProps={{ readOnly: true }}
+            sx={{
+              flex: 1,
+              "& .MuiOutlinedInput-root": {
+                borderRadius: "12px",
+                backgroundColor: "#101A23",
+                color: "#fff",
+                boxShadow: "inset 0 2px 3px rgba(0,0,0,0.6)",
+                "& fieldset": { borderColor: "#2A2F34" },
+                "&:hover fieldset": { borderColor: "#1D8D94" },
+                "&.Mui-focused fieldset": { borderColor: "#1D8D94" },
+              },
+              input: {
+                color: "#fff",
+                fontWeight: 600,
+                padding: "12px 14px",
+              },
+            }}
+          />
+
+          <TextField
+            select
+            value={toCurrency.value}
+            onChange={(e) =>
+              setToCurrency(
+                currencyOptions.find((c) => c.value === e.target.value)!
+              )
+            }
+            variant="outlined"
+            sx={{
+              minWidth: 160,
+              "& .MuiOutlinedInput-root": {
+                borderRadius: "12px",
+                backgroundColor: "#101A23",
+                "& fieldset": { borderColor: "#2A2F34" },
+                "&:hover fieldset": { borderColor: "#1D8D94" },
+                "&.Mui-focused fieldset": { borderColor: "#1D8D94" },
+              },
+              "& .MuiSelect-select": {
+                color: "#1D8D94",
+                fontWeight: 600,
+                padding: "12px 10px",
+              },
+            }}
+          >
+            {currencyOptions.map((c) => (
+              <MenuItem key={c.value} value={c.value}>
+                {c.label}
+              </MenuItem>
+            ))}
+          </TextField>
+        </Box>
+
+        <Typography sx={{ color: "#979E9C", fontSize: 12, mt: 1.5 }}>
+          Min: $100 &nbsp;&nbsp; Max: $4832
+        </Typography>
+      </Box>
+
+
+
+
+      {/* Make Exchange button */}
+      <Button
+        onClick={handleMakeExchange}
+        sx={{
+          mt: 1,
+          width: 320,
+          height: 52,
+          fontWeight: 600,
+          fontSize: 15,
+          borderRadius: "12px",
+          textTransform: "none",
+          color: "#fff",
+          background: "linear-gradient(135deg, #1D8D94, #40A578)",
+          boxShadow: "0px 0px 25px 0px rgba(64,165,120,0.4)",
+          transition: "0.3s",
+          "&:hover": {
+            transform: "scale(1.03)",
+            background: "linear-gradient(135deg, #40A578, #1D8D94)",
+            boxShadow: "0px 0px 35px 0px rgba(64,165,120,0.6)",
+          },
+        }}
+      >
+        Make Exchange
+      </Button>
+    </Box>
+  );
+};
+
+export default ExchangeBox;

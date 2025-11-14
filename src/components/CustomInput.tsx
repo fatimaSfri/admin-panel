@@ -4,7 +4,7 @@ import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 interface EmailInputProps {
   value: string;
   name: string;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void; 
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void; 
   onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void;
   error?: boolean; 
   helperText?: string;
@@ -24,7 +24,7 @@ const CustomInput: React.FC<EmailInputProps> = ({
 }) => {
   return (
     <Box>
-      <Typography sx={{ mb: 2, fontSize: { xs: '14px', lg: '16px' }, color: "#ABABAB",  fontFamily:"NiramitBold", }}>
+      <Typography sx={{ mb: "15px", fontSize: { xs: '14px', lg: '16px' }, color: "#ABABAB",  fontFamily:"NiramitBold", }}>
        {lable}
       </Typography>
       <TextField

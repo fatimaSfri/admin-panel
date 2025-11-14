@@ -10,8 +10,9 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import RegisterUI from "./components/Register";
 import CopyrightFooter from "./components/Footer";
 import ForgetPassword from "./components/ForgetPassword";
-import ChangePassword from "./components/ChangePassword"
+import ChangePassword from "./components/ChangePassword";
 import Welcome from "./components/Welcome";
+import Home from "./components/panel/Home";
 
 const App = () => {
   return (
@@ -21,16 +22,21 @@ const App = () => {
           <ThemeProvider theme={theme}>
             <Stack
               direction="column"
-              sx={{ bgcolor: "primary.main", minHeight:'100vh' }}
+              sx={{ bgcolor: "primary.main", minHeight: "100vh" }}
             >
               <Header></Header>
               <Routes>
-                  <Route path="/" element={<RegisterUI />} />
+                <Route path="/home/step/:step" element={<Home />} />
+                <Route path="home" element={<Home />} /> 
+              </Routes>
+              <Routes>
+                <Route path="/" element={<RegisterUI />} />
+                {/* <Route path="home" element={<Home/>}/> */}
                 <Route path="auth/login" element={<LoginUI />} />
                 <Route path="auth/register" element={<RegisterUI />} />
-                <Route path="auth/forgetPassword" >
-                   <Route index element={<ForgetPassword/>}/>
-                   <Route  path="ChangePass" element={<ChangePassword/>}/>
+                <Route path="auth/forgetPassword">
+                  <Route index element={<ForgetPassword />} />
+                  <Route path="ChangePass" element={<ChangePassword />} />
                 </Route>
                 <Route path="auth/home" element={<Welcome />} />
               </Routes>
