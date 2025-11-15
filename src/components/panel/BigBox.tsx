@@ -17,11 +17,12 @@ const BigBox:React.FC<WrapperProps> = ({
           backdropFilter: "blur(20px)",
           borderRadius: "30px",
           mx: "auto",
-         padding: "29px 80px 39px 77px",
+         padding: "29px 80px 43px 77px",
          boxSizing: "border-box",
          display:"flex",
          flexDirection:"column",   
-         gap:"43px"
+         gap:"43px",
+         mb:"95px"
         }}
       >
           {children}

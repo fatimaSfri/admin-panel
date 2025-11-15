@@ -19,6 +19,7 @@ export const CustomButton: React.FC<CustomButtonProps> = ({
     onClick={onClick}
     sx={{
       maxWidth:"560px",
+     boxSizing:"border-box",
       fontFamily:"NiramitBold",
       height: 60,
       backgroundColor: "#1D8D94",

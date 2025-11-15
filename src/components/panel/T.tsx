@@ -1,15 +1,12 @@
 import {
   Box,
-  Divider,
-  InputBase,
-  MenuItem,
-  Select,
-  Typography,
 } from "@mui/material";
 import ParentBox from "../ParentBox";
 import { useEffect, useState } from "react";
 import { Ex } from "./ExchangeField";
 import { CustomButton } from "../CustomButton";
+import { useInfoDispatch } from "../../store/hooks";
+import { setExchangeData } from "../../store/ExchangeSlice";
 
 interface Props {
   goToStep: (step: number) => void;
@@ -47,6 +44,9 @@ const parseNumber = (s: string) => {
 //   n.toFixed(decimals).replace(/\.?0+$/, "");
 
 const ExchangeBox: React.FC<Props> = ({goToStep}) => {
+
+
+  const dispatch = useInfoDispatch()
   const [fromAmount, setFromAmount] = useState<string>("1000");
   const [toAmount, setToAmount] = useState<string>("1000");
   const [fromCurrency, setFromCurrency] = useState(currencyOptions[0]);
@@ -90,12 +90,25 @@ const convertNumber = (
     setToAmount(nextToAmount);
   };
 
-  const handleMakeExchange = () => {
-    alert(
-      `Exchange: ${fromAmount} ${fromCurrency.label} → ${toAmount} ${toCurrency.label}`
-    );
+  // const handleMakeExchange = () => {
+  //   alert(
+  //     `Exchange: ${fromAmount} ${fromCurrency.label} → ${toAmount} ${toCurrency.label}`
+  //   );
+  // };
+
+ const handleMakeExchange = () => {
+    // فقط داده‌های اینپوت‌ها
+    dispatch(setExchangeData({
+      fromCurrency,
+      toCurrency,
+      fromAmount,
+      toAmount,
+    }));
+
+    goToStep(1);
   };
 
+  
   return (
     <Box
       sx={{
@@ -162,7 +175,7 @@ const convertNumber = (
           currencyOptions={currencyOptions}
         />
       </ParentBox>
-     <CustomButton label="Make Exchange" mt={0} mb={4} onClick={() => goToStep(1)}></CustomButton>
+     <CustomButton label="Make Exchange" mt={0} mb={4} onClick={handleMakeExchange}></CustomButton>
 
     </Box>
   );

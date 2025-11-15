@@ -22,6 +22,7 @@ const ExchangeSteps: React.FC<ExchangeStepsProps> = ({ activeStep = 0 }) => {
         justifyContent: "center",
         px: 4,
        boxSizing: "border-box",
+       mt:"65px"
       }}
     >
       <Box
