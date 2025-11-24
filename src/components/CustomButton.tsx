@@ -1,10 +1,13 @@
 import { Button, type ButtonProps } from '@mui/material';
+import { Link, type To } from 'react-router-dom';
 
 interface CustomButtonProps extends Omit<ButtonProps, 'sx' | 'children'> {
   label: string; 
   mt?: number; 
   mb?: number; 
   onClick?: () => void; 
+  color?:string;
+  to?:To
 }
 
 export const CustomButton: React.FC<CustomButtonProps> = ({ 
@@ -12,17 +15,22 @@ export const CustomButton: React.FC<CustomButtonProps> = ({
   mt = 2.5, 
   mb = 2, 
   onClick, 
-  ...props 
+  color="#1D8D94",
+  to,
+  ...props
 }) => (
   <Button
+   component={to ? Link : 'button'}   
+    to={to}  
     fullWidth
     onClick={onClick}
     sx={{
+      width: {xs:"90%" , sm:"100%"},
       maxWidth:"560px",
-     boxSizing:"border-box",
+      boxSizing:"border-box",
       fontFamily:"NiramitBold",
       height: 60,
-      backgroundColor: "#1D8D94",
+      backgroundColor: color,
       boxShadow: "0px 0px 20px 0px #1D8D9480",
       color: "white",
       fontSize: "16px",
@@ -34,7 +42,7 @@ export const CustomButton: React.FC<CustomButtonProps> = ({
       "&:hover": {
         transform: "scale(1.02)",
         boxShadow: "0px 0px 25px 0px #1D8D9480",
-        backgroundColor: "#1A7A7D",
+        backgroundColor: color,
       },
       "&:active": {
         transform: "scale(0.98)",
@@ -44,4 +52,5 @@ export const CustomButton: React.FC<CustomButtonProps> = ({
   >
     {label}
   </Button>
+
 );

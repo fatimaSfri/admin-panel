@@ -40,11 +40,10 @@ const exchangeSlice = createSlice({
 
 export const { setExchangeData, clearExchangeData } = exchangeSlice.actions;
 
-// تنظیمات persist
+
 const persistConfig = {
   key: 'exchange',
   storage,
-  // فقط data ذخیره بشه
   whitelist: ['data'],
 };
 

@@ -30,6 +30,7 @@ const ExchangeSteps: React.FC<ExchangeStepsProps> = ({ activeStep = 0 }) => {
           maxWidth:"686px",
           width: "100%",
           display: "flex",
+          flexWrap:{xs:"wrap", sm:"nowrap"},
           alignItems: "center",
           justifyContent: "space-between",
           gap: 2,
@@ -68,7 +69,7 @@ const ExchangeSteps: React.FC<ExchangeStepsProps> = ({ activeStep = 0 }) => {
               <Typography
                 sx={{
                   ml: 1.6,
-                  fontSize: 14,
+                  fontSize:{xs:"10px" , sm:"12px" , md:"14px"},
                   fontWeight: isActive ? 700 : 500,
                   color: isActive || isCompleted ? "#40A578" :  "#9aa3ab",
                   whiteSpace: "nowrap",
@@ -82,13 +83,14 @@ const ExchangeSteps: React.FC<ExchangeStepsProps> = ({ activeStep = 0 }) => {
                 <Box
                   sx={{
                     height: "1px",
-                    width: "100px",
+                    width: {xs:"20px" , sm:"100px"},
                     backgroundColor: isCompleted
                       ? "#40A578"
                       : "#596B89",
                     boxShadow: isCompleted ? "0px 4px 12px 0px #40A57866" : "none",
                     borderRadius: 1,
                     zIndex: 0,
+                    visibility:{xs:"hidden" , sm:"visible"}
                   }}
                 />
               )}

@@ -1,3 +1,4 @@
+import { Visibility } from "@mui/icons-material";
 import { Card } from "@mui/material"
 
 interface WrapperProps {
@@ -17,12 +18,13 @@ const BigBox:React.FC<WrapperProps> = ({
           backdropFilter: "blur(20px)",
           borderRadius: "30px",
           mx: "auto",
-         padding: "29px 80px 43px 77px",
+         padding: {xs:"29px 60px 43px 57px", md:"29px 80px 43px 77px"},
          boxSizing: "border-box",
          display:"flex",
          flexDirection:"column",   
          gap:"43px",
-         mb:"95px"
+         mb:"95px",
+         overflow:"visible"
         }}
       >
           {children}

@@ -64,7 +64,7 @@ export const Ex: React.FC<ExchangeFieldProps> = ({
       {/* باکس یکپارچه */}
       <Box
         sx={{
-          minWidth: "485px",
+          maxWidth: "485px",
           display: "flex",
           alignItems: "center",
           bgcolor: "#242C39",

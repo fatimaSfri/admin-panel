@@ -11,7 +11,7 @@ const Parent:React.FC<WrapperProps> = ({
       <Card
         elevation={0}
         sx={{
-          width: "100%",
+          width: {xs:"90%" , sm:"100%"},
           maxWidth:"560px",
           backgroundColor: "rgba(250, 250, 250, 0.025)",
           backdropFilter: "blur(20px)",

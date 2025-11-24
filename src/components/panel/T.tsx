@@ -15,13 +15,13 @@ interface Props {
 const currencyOptions = [
   {
     label: "USDT (TRC20)",
-    value: "usdt",
+    value: "USDT",
     rateToUSD: 1,
     icon: "../../../src/assets/img/tether2.svg",
   },
   {
     label: "Perfect Money",
-    value: "pm",
+    value: "Perfect Money",
     rateToUSD: 0.98,
     icon: "../../../src/assets/img/PM2.svg",
   },
@@ -47,8 +47,8 @@ const ExchangeBox: React.FC<Props> = ({goToStep}) => {
 
 
   const dispatch = useInfoDispatch()
-  const [fromAmount, setFromAmount] = useState<string>("1000");
-  const [toAmount, setToAmount] = useState<string>("1000");
+  const [fromAmount, setFromAmount] = useState<string>("100");
+  const [toAmount, setToAmount] = useState<string>("100");
   const [fromCurrency, setFromCurrency] = useState(currencyOptions[0]);
   const [toCurrency, setToCurrency] = useState(currencyOptions[1]);
 

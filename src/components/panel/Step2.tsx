@@ -1,12 +1,11 @@
 // Step1.tsx
-import { Box, Typography } from "@mui/material";
+import { Box, Tooltip, Typography } from "@mui/material";
 import BigBox from "./BigBox";
 import CustomInput from "../CustomInput";
 import CheckBox from "./CheckBox";
 import { useState } from "react";
 import { CustomButton } from "../CustomButton";
 import { useInfoSelector } from "../../store/hooks";
-
 
 interface Props {
   goToStep: (step: number) => void;
@@ -21,9 +20,11 @@ const Step1 = ({ goToStep }: Props) => {
     "we conduct AML checks in accordance with the AML policy of the flashobmen service.",
     "fill out all fields of the form provided.",
     "click the “make an exchange” button.",
-    "read the terms of exchange. if you accept them, check the approprite boxes9. pay for the application according to the instructions on the website."
+    "read the terms of exchange. if you accept them, check the approprite boxes9. pay for the application according to the instructions on the website.",
   ];
- const exchangeData = useInfoSelector(state => state.exchange.data);
+
+  const exchangeData = useInfoSelector((state) => state.exchange.data);
+  const currentUser = useInfoSelector((state) => state.user.items.length > 0);
 
   return (
     <Box
@@ -59,43 +60,164 @@ const Step1 = ({ goToStep }: Props) => {
             sx={{
               width: "100%",
               display: "flex",
-              justifyContent: "space-between",
-              color:"#ABABAB",
-              fontFamily:"NiramitBold",
-              fontSize:"20px"
+              flexDirection: "column",
+              gap: 2,
             }}
           >
-            send :
+            {/* ====== SEND ====== */}
             <Box
               sx={{
-                border: "2px solid red",
                 display: "flex",
-                gap: 1,
+                flexDirection: { xs: "column", sm: "row" },
+                justifyContent: "space-between",
+                alignItems: { xs: "flex-start", sm: "center" },
+                gap: 2,
+                color: "#ABABAB",
+                fontFamily: "NiramitBold",
+                fontSize: "20px",
               }}
             >
-             <strong>{exchangeData.fromAmount} {exchangeData.fromCurrency.icon}</strong>
-      {/* <Typography>کشور: {userInfo.name}</Typography> */}
+              <Typography
+                sx={{
+                  whiteSpace: "nowrap",
+                  fontFamily: "NiramitBold",
+                  fontSize: "20px",
+                  color: "#ABABAB",
+                }}
+              >
+                Send:
+              </Typography>
+
+              <Box
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "12px",
+                  minWidth: 0,
+                  justifyContent: { xs: "flex-start", sm: "flex-end" },
+                  whiteSpace: { xs: "normal", sm: "nowrap" },
+                  width: { xs: "100%", sm: "auto" },
+                }}
+              >
+                <Tooltip title={exchangeData.fromAmount} arrow placement="top">
+                  <Typography
+                    sx={{
+                      fontFamily: "NiramitBold",
+                      fontSize: "20px",
+                      color: "white",
+                      whiteSpace: { xs: "normal", sm: "nowrap" },
+                      overflow: "hidden",
+                      textOverflow: "ellipsis",
+                      maxWidth: { xs: "100%", sm: "auto" },
+                      cursor: "default",
+                    }}
+                  >
+                    {exchangeData.fromAmount}
+                  </Typography>
+                </Tooltip>
+
+                <Box
+                  component="img"
+                  src={exchangeData.fromCurrency.icon}
+                  alt={exchangeData.fromCurrency.value}
+                  sx={{
+                    width: 25,
+                    height: 25,
+                    flexShrink: 0,
+                    objectFit: "contain",
+                  }}
+                />
+
+                <Typography
+                  sx={{
+                    fontFamily: "NiramitBold",
+                    fontSize: "20px",
+                    color: "white",
+                    textTransform: "uppercase",
+                    whiteSpace: "nowrap",
+                  }}
+                >
+                  {exchangeData.fromCurrency.value}
+                </Typography>
+              </Box>
             </Box>
-          </Box>
-          <Box
-            sx={{
-              width: "100%",
-              display: "flex",
-              justifyContent: "space-between",
-              color:"#ABABAB",
-              fontFamily:"NiramitBold",
-              fontSize:"20px"
-            }}
-          >
-            Receive:
+
+            {/* ====== RECEIVE ====== */}
             <Box
               sx={{
-                border: "2px solid red",
                 display: "flex",
-                gap: 1,
+                flexDirection: { xs: "column", sm: "row" },
+                justifyContent: "space-between",
+                alignItems: { xs: "flex-start", sm: "center" },
+                gap: 2,
+                color: "#ABABAB",
+                fontFamily: "NiramitBold",
+                fontSize: "20px",
               }}
             >
-              oioi
+              <Typography
+                sx={{
+                  whiteSpace: "nowrap",
+                  fontFamily: "NiramitBold",
+                  fontSize: "20px",
+                  color: "#ABABAB",
+                }}
+              >
+                Receive:
+              </Typography>
+
+              <Box
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "12px",
+                  minWidth: 0,
+                  justifyContent: { xs: "flex-start", sm: "flex-end" },
+                  whiteSpace: { xs: "normal", sm: "nowrap" },
+                  width: { xs: "100%", sm: "auto" },
+                }}
+              >
+                <Tooltip title={exchangeData.toAmount} arrow placement="top">
+                  <Typography
+                    sx={{
+                      fontFamily: "NiramitBold",
+                      fontSize: "20px",
+                      color: "white",
+                      whiteSpace: { xs: "normal", sm: "nowrap" },
+                      overflow: "hidden",
+                      textOverflow: "ellipsis",
+                      maxWidth: { xs: "100%", sm: "auto" },
+                      cursor: "default",
+                    }}
+                  >
+                    {exchangeData.toAmount}
+                  </Typography>
+                </Tooltip>
+
+                <Box
+                  component="img"
+                  src={exchangeData.toCurrency.icon}
+                  alt={exchangeData.toCurrency.value}
+                  sx={{
+                    width: 25,
+                    height: 25,
+                    flexShrink: 0,
+                    objectFit: "contain",
+                  }}
+                />
+
+                <Typography
+                  sx={{
+                    fontFamily: "NiramitBold",
+                    fontSize: "20px",
+                    color: "white",
+                    textTransform: "capitalize",
+                    whiteSpace: "nowrap",
+                  }}
+                >
+                  {exchangeData.toCurrency.value}
+                </Typography>
+              </Box>
             </Box>
           </Box>
           <Box
@@ -107,14 +229,16 @@ const Step1 = ({ goToStep }: Props) => {
               mt: "18px",
             }}
           ></Box>
-          <Box>
-            <CustomInput
-              lable="Email :"
-              placeholder="Please Enter Your Email"
-              value=""
-              name="email"
-            ></CustomInput>
-          </Box>
+          {!currentUser && (
+            <Box>
+              <CustomInput
+                lable="Email :"
+                placeholder="Please Enter Your Email"
+                value=""
+                name="email"
+              ></CustomInput>
+            </Box>
+          )}
         </Box>
 
         <Box
@@ -129,7 +253,7 @@ const Step1 = ({ goToStep }: Props) => {
               color: "white",
               fontFamily: "NiramitBold",
               fontSize: { xs: "18px", md: "20px" },
-              pb:"23px"
+              pb: "23px",
             }}
           >
             Exchange Conditions:
@@ -140,8 +264,8 @@ const Step1 = ({ goToStep }: Props) => {
               sx={{
                 display: "flex",
                 gap: "13px",
-              
-                  lineHeight: "29px",
+
+                lineHeight: "29px",
               }}
             >
               {/* circle */}
@@ -158,7 +282,7 @@ const Step1 = ({ goToStep }: Props) => {
                   fontSize: "14px",
                   fontFamily: "NiramitBold",
                   flexShrink: 0,
-                  mt:"3px"
+                  mt: "3px",
                 }}
               >
                 {index + 1}
@@ -182,22 +306,28 @@ const Step1 = ({ goToStep }: Props) => {
               </Typography>
             </Box>
           ))}
-          <Box sx={{my:"19px"}}>
-          <CheckBox
-          checked={agree}
-          onChange={(e) => setAgree(e.target.checked)}></CheckBox>
+          <Box sx={{ my: "19px" }}>
+            <CheckBox
+              checked={agree}
+              onChange={(e) => setAgree(e.target.checked)}
+            ></CheckBox>
           </Box>
         </Box>
 
-        <Box sx={{ display:"flex" , alignItems:"center" ,justifyContent:"center"}}>
-        <CustomButton
-          label="Confirm"
-          mt={-0.25}
-          mb={0}
-          onClick={() => goToStep(2)}
-        ></CustomButton>
+        <Box
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <CustomButton
+            label="Confirm"
+            mt={-0.25}
+            mb={0}
+            onClick={() => goToStep(2)}
+          ></CustomButton>
         </Box>
-
       </BigBox>
       {/* <Button variant="contained" onClick={() => goToStep(2)}>
       </Button> */}
