@@ -567,3 +567,182 @@ const ExchangeBox: React.FC = () => {
 };
 
 export default ExchangeBox;
+
+
+
+          <Box
+            sx={{
+              width: "100%",
+              display: "flex",
+              flexDirection: "column",
+              gap: 2,
+            }}
+          >
+            {/* ====== SEND ====== */}
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: { xs: "column", sm: "row" },
+                justifyContent: "space-between",
+                alignItems: { xs: "flex-start", sm: "center" },
+                gap: 2,
+                color: "#ABABAB",
+                fontFamily: "NiramitBold",
+                fontSize: "20px",
+              }}
+            >
+              <Typography
+                sx={{
+                  whiteSpace: "nowrap",
+                  fontFamily: "NiramitBold",
+                  fontSize: "20px",
+                  color: "#ABABAB",
+                }}
+              >
+                Send:
+              </Typography>
+
+              <Box
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "12px",
+                  minWidth: 0,
+                  justifyContent: { xs: "flex-start", sm: "flex-end" },
+                  whiteSpace: { xs: "normal", sm: "nowrap" },
+                  width: { xs: "100%", sm: "auto" },
+                }}
+              >
+                <Tooltip title={exchangeData.fromAmount} arrow placement="top">
+                  <Typography
+                    sx={{
+                      fontFamily: "NiramitBold",
+                      fontSize: "20px",
+                      color: "white",
+                      whiteSpace: { xs: "normal", sm: "nowrap" },
+                      overflow: "hidden",
+                      textOverflow: "ellipsis",
+                      maxWidth: { xs: "100%", sm: "auto" },
+                      cursor: "default",
+                    }}
+                  >
+                    {exchangeData.fromAmount}
+                  </Typography>
+                </Tooltip>
+
+                <Box
+                  component="img"
+                  src={exchangeData.fromCurrency.icon}
+                  alt={exchangeData.fromCurrency.value}
+                  sx={{
+                    width: 25,
+                    height: 25,
+                    flexShrink: 0,
+                    objectFit: "contain",
+                  }}
+                />
+
+                <Typography
+                  sx={{
+                    fontFamily: "NiramitBold",
+                    fontSize: "20px",
+                    color: "white",
+                    textTransform: "uppercase",
+                    whiteSpace: "nowrap",
+                  }}
+                >
+                  {exchangeData.fromCurrency.value}
+                </Typography>
+              </Box>
+            </Box>
+
+            {/* ====== RECEIVE ====== */}
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: { xs: "column", sm: "row" },
+                justifyContent: "space-between",
+                alignItems: { xs: "flex-start", sm: "center" },
+                gap: 2,
+                color: "#ABABAB",
+                fontFamily: "NiramitBold",
+                fontSize: "20px",
+              }}
+            >
+              <Typography
+                sx={{
+                  whiteSpace: "nowrap",
+                  fontFamily: "NiramitBold",
+                  fontSize: "20px",
+                  color: "#ABABAB",
+                }}
+              >
+                Receive:
+              </Typography>
+
+              <Box
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "12px",
+                  minWidth: 0,
+                  justifyContent: { xs: "flex-start", sm: "flex-end" },
+                  whiteSpace: { xs: "normal", sm: "nowrap" },
+                  width: { xs: "100%", sm: "auto" },
+                }}
+              >
+                <Tooltip title={exchangeData.toAmount} arrow placement="top">
+                  <Typography
+                    sx={{
+                      fontFamily: "NiramitBold",
+                      fontSize: "20px",
+                      color: "white",
+                      whiteSpace: { xs: "normal", sm: "nowrap" },
+                      overflow: "hidden",
+                      textOverflow: "ellipsis",
+                      maxWidth: { xs: "100%", sm: "auto" },
+                      cursor: "default",
+                    }}
+                  >
+                    {exchangeData.toAmount}
+                  </Typography>
+                </Tooltip>
+
+                <Box
+                  component="img"
+                  src={exchangeData.toCurrency.icon}
+                  alt={exchangeData.toCurrency.value}
+                  sx={{
+                    width: 25,
+                    height: 25,
+                    flexShrink: 0,
+                    objectFit: "contain",
+                  }}
+                />
+
+                <Typography
+                  sx={{
+                    fontFamily: "NiramitBold",
+                    fontSize: "20px",
+                    color: "white",
+                    textTransform: "capitalize",
+                    whiteSpace: "nowrap",
+                  }}
+                >
+                  {exchangeData.toCurrency.value}
+                </Typography>
+              </Box>
+            </Box>
+          </Box>
+          <Box
+            sx={{
+              width: "100%",
+              mx: "auto",
+              bgcolor: "#596B89",
+              height: "1px",
+              mt: "18px",
+            }}
+          ></Box>
+
+
+

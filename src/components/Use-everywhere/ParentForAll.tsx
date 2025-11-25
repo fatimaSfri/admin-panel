@@ -17,7 +17,6 @@ const ParentForAll:React.FC<WrapperProps> = ({children ,gap}) => {
         justifyContent: "center",
         alignItems: "center",
         minHeight:"100vh",
-        border:"2px solid red",
        gap 
        }}
     >

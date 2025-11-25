@@ -6,7 +6,7 @@ const PrimaryNav = () => {
   return (
     <Stack
       direction="row"
-      spacing={{ xs: 1, sm: 2, md: 3, lg: 4 }}
+      spacing={{ sm: 2, md:"35px" }}
       sx={{ display: { xs: "none", md: "flex" } }}
       alignItems="center"
     >
@@ -21,6 +21,9 @@ const PrimaryNav = () => {
               position: "relative",
               textDecoration: "none",
               textTransform: "none",
+                 p:0,
+                 m:0,
+                 boxSizing:"border-box",
               "&::after": {
                 content: '""',
                 position: "absolute",

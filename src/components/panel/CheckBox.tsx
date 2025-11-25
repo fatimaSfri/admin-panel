@@ -1,9 +1,8 @@
-// src/components/AgreeCheckbox.tsx
 import { styled } from '@mui/material/styles';
 import Checkbox, {type CheckboxProps } from '@mui/material/Checkbox';
 import { FormControlLabel, Typography } from '@mui/material';
 
-// مربع معمولی
+
 const BpIcon = styled('span')({
   borderRadius: 6,
   width: 32,
@@ -11,7 +10,7 @@ const BpIcon = styled('span')({
   backgroundColor: '#242C39',
 });
 
-// مربع انتخاب شده
+
 const BpCheckedIcon = styled(BpIcon)({
   backgroundColor: '#60A7F8',
   backgroundImage: 'linear-gradient(180deg,hsla(0,0%,100%,.1),hsla(0,0%,100%,0))',
@@ -25,7 +24,7 @@ const BpCheckedIcon = styled(BpIcon)({
   },
 });
 
-// کامپوننت چک‌باکس با تایپ دقیق
+
 const CustomCheckbox = (props: CheckboxProps) => (
   <Checkbox
     disableRipple
@@ -36,7 +35,7 @@ const CustomCheckbox = (props: CheckboxProps) => (
   />
 );
 
-// پراپس با تایپ دقیق
+
 interface AgreeCheckboxProps {
   checked: boolean;
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;

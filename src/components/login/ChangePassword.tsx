@@ -1,15 +1,15 @@
 import { useState } from "react";
 import { PasswordInput } from "./PasswordInput";
-import { CustomButton } from "./CustomButton";
+import { CustomButton } from "../Use-everywhere/CustomButton";
 import CustomTitle from "./CustomTitle";
-import Parent from "./ParentBox";
+import Parent from "../Use-everywhere/ParentBox";
 import { useFormik } from "formik";
 import { toFormikValidationSchema } from "zod-formik-adapter";
-import { resetPasswordSchema , type ResetPasswordData } from "../schemas/resetPassword";
-import { resetPassword } from "../store/UserSlice";
+import { resetPasswordSchema , type ResetPasswordData } from "../../schemas/resetPassword";
+import { resetPassword } from "../../store/UserSlice";
 import { useNavigate } from "react-router-dom";
-import { useInfoDispatch } from "../store/hooks";
-import ParentForAll from "./ParentForAll";
+import { useInfoDispatch } from "../../store/hooks";
+import ParentForAll from "../Use-everywhere/ParentForAll";
 
 const ChangePassword = () => {
  const dispatch = useInfoDispatch();

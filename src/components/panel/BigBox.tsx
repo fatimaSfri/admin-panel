@@ -1,4 +1,3 @@
-import { Visibility } from "@mui/icons-material";
 import { Card } from "@mui/material"
 
 interface WrapperProps {

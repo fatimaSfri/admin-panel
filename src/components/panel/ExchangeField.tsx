@@ -1,4 +1,3 @@
-// components/ExchangeField.tsx
 import React from "react";
 import {
   Box,
@@ -31,13 +30,13 @@ const normalizeNumberString = (s: string) => {
   if (!s) return "";
   let t = s.trim();
   t = t.replace(/[,٬\s\u060C]/g, "");
-  t = t.replace(/[^0-9.\-]/g, "");
+  t = t.replace(/[^0-9.-]/g, "");
   const parts = t.split(".");
   if (parts.length > 2) t = parts.shift() + "." + parts.join("");
   return t;
 };
 
-export const Ex: React.FC<ExchangeFieldProps> = ({
+export const ExchangeField: React.FC<ExchangeFieldProps> = ({
   label,
   amount,
   setAmount,
@@ -49,7 +48,6 @@ export const Ex: React.FC<ExchangeFieldProps> = ({
 }) => {
   return (
    <>
-      {/* عنوان */}
       <Typography
         sx={{
           color: "#ABABAB",
@@ -61,7 +59,6 @@ export const Ex: React.FC<ExchangeFieldProps> = ({
         {label}
       </Typography>
 
-      {/* باکس یکپارچه */}
       <Box
         sx={{
           maxWidth: "485px",
@@ -74,7 +71,6 @@ export const Ex: React.FC<ExchangeFieldProps> = ({
           p: 0,
         }}
       >
-        {/* مقدار */}
         <InputBase
           value={amount}
           onChange={(e) =>
@@ -99,7 +95,6 @@ export const Ex: React.FC<ExchangeFieldProps> = ({
           }}
         />
 
-        {/* خط عمودی */}
         <Divider
           orientation="vertical"
           flexItem
@@ -111,7 +106,6 @@ export const Ex: React.FC<ExchangeFieldProps> = ({
           }}
         />
 
-        {/* سلکتور ارز */}
         <Select
           value={currency.value}
           onChange={(e) =>
@@ -174,7 +168,6 @@ export const Ex: React.FC<ExchangeFieldProps> = ({
         </Select>
       </Box>
 
-      {/* متن پایین */}
       <Typography sx={{ color: "#ABABAB", fontSize: 14 }}>
         {minMaxText}
       </Typography>

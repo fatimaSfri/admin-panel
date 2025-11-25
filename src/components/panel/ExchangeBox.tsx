@@ -1,10 +1,10 @@
 import {
   Box,
 } from "@mui/material";
-import ParentBox from "../ParentBox";
+import ParentBox from "../Use-everywhere/ParentBox";
 import { useEffect, useState } from "react";
-import { Ex } from "./ExchangeField";
-import { CustomButton } from "../CustomButton";
+import { ExchangeField } from "./ExchangeField";
+import { CustomButton } from "../Use-everywhere/CustomButton";
 import { useInfoDispatch } from "../../store/hooks";
 import { setExchangeData } from "../../store/ExchangeSlice";
 
@@ -31,7 +31,7 @@ const normalizeNumberString = (s: string) => {
   if (!s) return "";
   let t = s.trim();
   t = t.replace(/[,٬\s\u060C]/g, "");
-  t = t.replace(/[^0-9.\-]/g, "");
+  t = t.replace(/[^0-9.-]/g, "");
   const parts = t.split(".");
   if (parts.length > 2) t = parts.shift() + "." + parts.join("");
   return t;
@@ -40,12 +40,9 @@ const parseNumber = (s: string) => {
   const n = Number(normalizeNumberString(s));
   return Number.isFinite(n) ? n : NaN;
 };
-// const toFixedTrim = (n: number, decimals = 6) =>
-//   n.toFixed(decimals).replace(/\.?0+$/, "");
+
 
 const ExchangeBox: React.FC<Props> = ({goToStep}) => {
-
-
   const dispatch = useInfoDispatch()
   const [fromAmount, setFromAmount] = useState<string>("100");
   const [toAmount, setToAmount] = useState<string>("100");
@@ -60,10 +57,9 @@ const convertNumber = (
   const valueNum = parseNumber(valueStr);
   if (Number.isNaN(valueNum)) return "";
 
-  // 20 واحد بیشتر + تبدیل نرخ
+
   const rawResult = valueNum * (from.rateToUSD / to.rateToUSD) + 20;
 
-  // گرد به عدد صحیح
   return Math.round(rawResult).toString();
 };
 
@@ -90,14 +86,7 @@ const convertNumber = (
     setToAmount(nextToAmount);
   };
 
-  // const handleMakeExchange = () => {
-  //   alert(
-  //     `Exchange: ${fromAmount} ${fromCurrency.label} → ${toAmount} ${toCurrency.label}`
-  //   );
-  // };
-
  const handleMakeExchange = () => {
-    // فقط داده‌های اینپوت‌ها
     dispatch(setExchangeData({
       fromCurrency,
       toCurrency,
@@ -113,7 +102,6 @@ const convertNumber = (
     <Box
       sx={{
         flexGrow: 1,
-        border: "2px solid green",
         width: "100%",
         display: "flex",
         flexDirection: "column",
@@ -123,7 +111,7 @@ const convertNumber = (
     >
       {/* box 1 */}
       <ParentBox>
-        <Ex
+        <ExchangeField
           label="From :"
           amount={fromAmount}
           setAmount={setFromAmount}
@@ -156,16 +144,14 @@ const convertNumber = (
           src="../../../src/assets/img/Group.png"
           alt="icon"
           sx={{
-        //    width:"26.13px",
-        //    height:"19px"
+        height:"19px"
           }}
         />
       </Box>
 
       {/* box 2 */}
-
       <ParentBox>
-        <Ex
+        <ExchangeField
           label="To :"
           amount={toAmount}
           currency={toCurrency}

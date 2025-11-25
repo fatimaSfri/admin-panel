@@ -1,12 +1,18 @@
 import { Button, type ButtonProps } from '@mui/material';
 import { Link, type To } from 'react-router-dom';
+import {type OverridableStringUnion } from "@mui/types";
+import {type ButtonPropsColorOverrides } from "@mui/material/Button";
+
+type CustomButtonColor =
+  | "primary"
+ 
 
 interface CustomButtonProps extends Omit<ButtonProps, 'sx' | 'children'> {
   label: string; 
   mt?: number; 
   mb?: number; 
   onClick?: () => void; 
-  color?:string;
+  color?: OverridableStringUnion<CustomButtonColor, ButtonPropsColorOverrides>;
   to?:To
 }
 

@@ -1,6 +1,6 @@
 
 import { Box } from "@mui/material"
-import CustomTitle from "./CustomTitle"
+import CustomTitle from "./login/CustomTitle"
 
 const Welcome = () => {
   return (

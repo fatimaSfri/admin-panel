@@ -1,22 +1,21 @@
-import EmailInput from "./CustomInput";
-import { CustomButton } from "./CustomButton";
+import EmailInput from "../Use-everywhere/CustomInput";
+import { CustomButton } from "../Use-everywhere/CustomButton";
 import CustomTitle from "./CustomTitle";
-import Parent from "./ParentBox";
+import Parent from "../Use-everywhere/ParentBox";
 import { useFormik } from 'formik';
 import { toFormikValidationSchema } from 'zod-formik-adapter';
-import { ForgetSchema,type ForgetData } from '../schemas/forgetPass'; 
-import { useInfoDispatch , useInfoSelector } from "../store/hooks";
-import type { RootState } from "../store/Store";
-import { checkEmail } from "../store/UserSlice";
+import { ForgetSchema,type ForgetData } from '../../schemas/forgetPass'; 
+import { useInfoDispatch , useInfoSelector } from "../../store/hooks";
+import { checkEmail } from "../../store/UserSlice";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import ParentForAll from "./ParentForAll";
+import ParentForAll from "../Use-everywhere/ParentForAll";
 
 const ForgetPassword = () => {
     const navigate = useNavigate();
     const dispatch = useInfoDispatch();
 
-  const { userForgot,errors } = useInfoSelector((state: RootState) => state.user);
+  const { userForgot,errors } = useInfoSelector((state) => state.user);
    const formik = useFormik<ForgetData>({ 
       initialValues: { email: '' }, 
       validationSchema: toFormikValidationSchema(ForgetSchema),

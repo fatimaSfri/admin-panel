@@ -1,18 +1,18 @@
 import React, { useState } from "react";
 import { Box } from "@mui/material";
-import { useInfoDispatch } from "../store/hooks";
-import { type UserInfo, addUser } from "../store/UserSlice";
-import CustomInput from "./CustomInput";
+import { useInfoDispatch } from "../../store/hooks";
+import { type UserInfo, addUser } from "../../store/UserSlice";
+import CustomInput from "../Use-everywhere/CustomInput";
 import { PasswordInput } from "./PasswordInput";
-import { CustomButton } from "./CustomButton";
+import { CustomButton } from "../Use-everywhere/CustomButton";
 import CustomQuestion from "./CustomQuestion";
 import CustomTitle from "./CustomTitle";
-import Parent from "./ParentBox";
+import Parent from "../Use-everywhere/ParentBox";
 import { useFormik } from 'formik';
 import { toFormikValidationSchema } from 'zod-formik-adapter';
-import { registerSchema, type RegisterData } from '../schemas/register';
+import { registerSchema, type RegisterData } from '../../schemas/register';
 import { useNavigate } from "react-router-dom";
-import ParentForAll from "./ParentForAll";
+import ParentForAll from "../Use-everywhere/ParentForAll";
 
 const RegisterUI: React.FC = () => {
   const dispatch = useInfoDispatch();

@@ -8,7 +8,7 @@ export default function Header() {
   return (
     <AppBar elevation={0}>
       <Toolbar
-        sx={{ alignItems: "center", justifyContent: "center", ml: { lg: -8 } }}
+        sx={{ alignItems: "center", justifyContent: "center" }}
       >
         <Box
           sx={{

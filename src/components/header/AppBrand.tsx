@@ -8,7 +8,7 @@ const AppBrand = () => {
       spacing={0.5}
       alignItems="center"
       sx={{
-        padding: 2,
+        py: 2,
       }}
     >
       <CardMedia

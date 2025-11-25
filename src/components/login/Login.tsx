@@ -1,20 +1,20 @@
 import { Box, Typography } from "@mui/material";
 import { useFormik } from "formik";
 import { toFormikValidationSchema } from "zod-formik-adapter";
-import { loginSchema, type LoginData } from "../schemas/login";
+import { loginSchema, type LoginData } from "../../schemas/login";
 import CustomizedCheckbox from "./CustomCheckbox";
-import CustomInput from "./CustomInput";
+import CustomInput from "../Use-everywhere/CustomInput";
 import { PasswordInput } from "./PasswordInput";
-import { CustomButton } from "./CustomButton";
+import { CustomButton } from "../Use-everywhere/CustomButton";
 import CustomQuestion from "./CustomQuestion";
 import CustomTitle from "./CustomTitle";
-import Parent from "./ParentBox";
+import Parent from "../Use-everywhere/ParentBox";
 import { useEffect, useState } from "react";
-import { useInfoDispatch, useInfoSelector } from "../store/hooks";
-import { loginUser } from "../store/UserSlice";
+import { useInfoDispatch, useInfoSelector } from "../../store/hooks";
+import { loginUser } from "../../store/UserSlice";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-import ParentForAll from "./ParentForAll";
+import ParentForAll from "../Use-everywhere/ParentForAll";
 
 const LoginUI = () => {
   const dispatch = useInfoDispatch();

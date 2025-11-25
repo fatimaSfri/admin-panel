@@ -1,25 +1,7 @@
-// import ParentForAll from "../ParentForAll"
-// import Stepper from "./Stepper"
-// import T from "./T"
-// const Home = () => {
-//   return (
-//     <ParentForAll gap="35px">
-//     <Stepper></Stepper>
-//      {/* <Test></Test> */}
-//      <T></T>
-//     </ParentForAll>
-//   )
-// }
-
-// export default Home
-
-
-
-// Home.tsx
 import { useParams, useNavigate } from 'react-router-dom';
 import ExchangeSteps from './Stepper';
 import { renderStepContent } from './RenderStepContent';
-import ParentForAll from "../ParentForAll"
+import ParentForAll from "../Use-everywhere/ParentForAll"
 
  const Home = () => {
   const { step = '0' } = useParams(); 

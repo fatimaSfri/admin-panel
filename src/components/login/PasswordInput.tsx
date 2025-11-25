@@ -1,7 +1,7 @@
 import { Box, TextField, Typography, InputAdornment, IconButton } from '@mui/material';
 import { useState } from 'react';
-import eyes from "../assets/img/eyes.svg"
-import eyesRed from "../assets/img/eyesRed.svg"
+import eyes from "../../assets/img/eyes.svg"
+import eyesRed from "../../assets/img/eyesRed.svg"
 
 interface PasswordInputProps {
   label?: string;

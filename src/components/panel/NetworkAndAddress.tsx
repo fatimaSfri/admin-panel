@@ -1,0 +1,53 @@
+import { Box, Typography } from "@mui/material"
+import NetworkInputSelect from "./DropDown&Input";
+import QrScannerTS from "./QrScanner";
+
+const NetworkAndAddress = () => {
+  return (
+        <Box
+          sx={{
+            mt: "17px",
+            display: "flex",
+            flexDirection: { xs: "column-reverse", md: "row" },
+            gap: "59px",
+          }}
+        >
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              gap: "38px",
+            }}
+          >
+            <Typography
+              sx={{
+                fontFamily: "NiramitBold",
+                color: "#ABABAB",
+                fontSize: "20px",
+                lineHeight: "46px",
+                letterSpacing: "0%",
+                textTransform: "capitalize",
+              }}
+            >
+              choose network and To receive 120 Perfect Money, please deposit
+              100 Tether to the Tether address below:
+            </Typography>
+
+            <NetworkInputSelect
+              editable
+              options={["TRON", "BSC"]}
+              value="TRON"
+              onChange={(v) => console.log(v)}
+              address="TJ8f92jf92j9j203jf209jf203"
+            />
+          </Box>
+
+          <Box sx={{ mx: "auto" }}>
+            <QrScannerTS/>
+          </Box>
+        </Box>
+
+  )
+}
+
+export default NetworkAndAddress
