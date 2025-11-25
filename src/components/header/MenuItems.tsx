@@ -1,4 +1,4 @@
-import { Box, IconButton, MenuItem , Menu } from "@mui/material";
+import { Box, IconButton, MenuItem, Menu } from "@mui/material";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import MenuIcon from "@mui/icons-material/Menu";
@@ -6,7 +6,7 @@ import { MENU_ITEMS } from "./navigation";
 import { useLocation } from "react-router-dom";
 
 const MenuItems = () => {
-const location = useLocation();
+  const location = useLocation();
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
@@ -15,7 +15,6 @@ const location = useLocation();
   const handleClose = () => {
     setAnchorEl(null);
   };
-  
 
   return (
     <Box sx={{ display: { xs: "flex", md: "none" } }}>

@@ -1,6 +1,6 @@
 import { Box, Button, Stack } from "@mui/material";
 import { Link } from "react-router-dom";
-import {NAV_ITEMS} from "./navigation"
+import { NAV_ITEMS } from "./navigation";
 
 const PrimaryNav = () => {
   return (
