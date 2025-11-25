@@ -1,7 +1,7 @@
 import { Stack } from "@mui/material";
 import { ThemeProvider } from "@mui/material/styles";
 import theme from "./components/Theme";
-import Header from "./components/Header";
+import Header from "./components/header/Header";
 import LoginUI from "./components/Login";
 import { Provider } from "react-redux";
 import { store, persistor } from "./store/Store";
