@@ -9,8 +9,8 @@ type CustomButtonColor =
 
 interface CustomButtonProps extends Omit<ButtonProps, 'sx' | 'children'> {
   label: string; 
-  mt?: number; 
-  mb?: number; 
+  mt?: string | number; 
+  mb?: string | number; 
   onClick?: () => void; 
   color?: OverridableStringUnion<CustomButtonColor, ButtonPropsColorOverrides>;
   to?:To
@@ -23,7 +23,6 @@ export const CustomButton: React.FC<CustomButtonProps> = ({
   onClick, 
   color="#1D8D94",
   to,
-  ...props
 }) => (
   <Button
    component={to ? Link : 'button'}   
@@ -43,6 +42,7 @@ export const CustomButton: React.FC<CustomButtonProps> = ({
       borderRadius: 2,
       mb,
       mt,
+      mx:"auto",
       textTransform: "none",
       transition: "all 0.3s ease-out",
       "&:hover": {
@@ -54,7 +54,7 @@ export const CustomButton: React.FC<CustomButtonProps> = ({
         transform: "scale(0.98)",
       },
     }}
-    {...props}
+
   >
     {label}
   </Button>

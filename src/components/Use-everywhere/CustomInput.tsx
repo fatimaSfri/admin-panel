@@ -9,7 +9,8 @@ interface EmailInputProps {
   error?: boolean; 
   helperText?: string;
   lable?:string;
-  placeholder?:string; 
+  placeholder?:string;
+  mb?:string
 }
 
 const CustomInput: React.FC<EmailInputProps> = ({
@@ -20,11 +21,12 @@ const CustomInput: React.FC<EmailInputProps> = ({
   error = false,
   helperText ,
   lable='Email :',
-  placeholder='Please Enter Your Email'
+  placeholder='Please Enter Your Email',
+  mb="15px"
 }) => {
   return (
     <Box>
-      <Typography sx={{ mb: "15px", fontSize: { xs: '14px', lg: '16px' }, color: "#ABABAB",  fontFamily:"NiramitBold", }}>
+      <Typography sx={{ mb , fontSize: { xs: '14px', lg: '16px' }, color: "#ABABAB",  fontFamily:"NiramitBold", textTransform:"capitalize" }}>
        {lable}
       </Typography>
       <TextField
@@ -41,15 +43,18 @@ const CustomInput: React.FC<EmailInputProps> = ({
           sx: {
             bgcolor: "#242C39",
             borderRadius: "8px",
+            height:"57px",
+            boxSizing:"border-box",
             color: "#fff",
             "& input::placeholder": {
               color: "#fff",
               opacity: 1,
               fontSize: { xs: '12px', lg: '14px' },
               fontFamily:"NiramitBold",
+              textTransform:"capitalize"
             },
             fontSize: { xs: '12px', lg: '14px' },
-            p: "2px",
+            px: "2px",
           },
           endAdornment: error ? (
             <IconButton aria-label="clear" sx={{ color: '#F66066', mr: 1 }}>

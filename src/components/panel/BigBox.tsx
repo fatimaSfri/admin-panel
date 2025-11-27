@@ -2,10 +2,12 @@ import { Card } from "@mui/material"
 
 interface WrapperProps {
   children: React.ReactNode; 
+  padding?:string
 }
 
 const BigBox:React.FC<WrapperProps> = ({
     children,
+    padding="29px 80px 43px 77px"
 }) => {
   return (
       <Card
@@ -17,7 +19,7 @@ const BigBox:React.FC<WrapperProps> = ({
           backdropFilter: "blur(20px)",
           borderRadius: "30px",
           mx: "auto",
-         padding: {xs:"29px 60px 43px 57px", md:"29px 80px 43px 77px"},
+         padding: {xs:"30px 50px 40px 50px", md:padding},
          boxSizing: "border-box",
          display:"flex",
          flexDirection:"column",   

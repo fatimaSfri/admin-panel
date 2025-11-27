@@ -13,6 +13,7 @@ import ForgetPassword from "./components/login/ForgetPassword";
 import ChangePassword from "./components/login/ChangePassword";
 import Welcome from "./components/Welcome";
 import Home from "./components/panel/Home";
+import UsdtPaymentSuccess from "./components/panel/payment/UsdtPaymentSuccess";
 
 const App = () => {
   return (
@@ -25,13 +26,27 @@ const App = () => {
               sx={{ bgcolor: "primary.main", minHeight: "100vh" }}
             >
               <Header></Header>
-              <Routes>
+              {/* <Routes>
                 <Route path="/home/step/:step" element={<Home />} />
                 <Route path="home" element={<Home />} /> 
+                <Route path="/home/st/payment" element={<UsdtPaymentSuccess/>} />
+              </Routes> */}
+
+              <Routes>
+                <Route path="/home" element={<Home />}>
+                  <Route path="step/:step">
+                    {/* داخل stepها */}
+                    <Route path="payment" element={<UsdtPaymentSuccess />} />
+                    {/* اگه بخوای stepهای دیگه هم داشته باشی */}
+                    {/* <Route index element={<StepContent />} /> */}
+                  </Route>
+                </Route>
+                {/* یا اگه home بدون step هم داری */}
+                <Route path="/home" element={<Home />} /> {/* این بیرون باشه */}
               </Routes>
+              
               <Routes>
                 <Route path="/" element={<RegisterUI />} />
-                {/* <Route path="home" element={<Home/>}/> */}
                 <Route path="auth/login" element={<LoginUI />} />
                 <Route path="auth/register" element={<RegisterUI />} />
                 <Route path="auth/forgetPassword">

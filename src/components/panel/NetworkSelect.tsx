@@ -1,14 +1,15 @@
 import React, { useState } from "react";
 import { Box, Typography, TextField } from "@mui/material";
-import arrow from "../../assets/img/arrow.svg"
+import arrow from "../../assets/img/arrow.svg";
 
 interface NetworkSelectProps {
   options?: string[];
   value?: string;
   onChange?: (value: string) => void;
-  address: string;
+  address?: string;
   onAddressChange?: (value: string) => void;
-  editable?:boolean
+  editable?: boolean;
+  maxWidth?:string
 }
 
 const NetworkSelect: React.FC<NetworkSelectProps> = ({
@@ -17,7 +18,8 @@ const NetworkSelect: React.FC<NetworkSelectProps> = ({
   onChange = () => {},
   address,
   onAddressChange = () => {},
-  editable=false
+  editable = false,
+  maxWidth = "736px"
 }) => {
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState(initialValue);
@@ -29,21 +31,28 @@ const NetworkSelect: React.FC<NetworkSelectProps> = ({
   };
 
   return (
-    <Box sx={{ width: "100%",maxWidth:"736px",height:"57px", display: "flex", position: "relative"}}>
-      
+    <Box
+      sx={{
+        width: "100%",
+        maxWidth,
+        height: "57px",
+        display: "flex",
+        position: "relative",
+      }}
+    >
       {/* LEFT BUTTON */}
       <Box
         onClick={() => setOpen((prev) => !prev)}
         sx={{
-          minWidth:"100px",
+          minWidth: "100px",
           width: "17%",
-          boxSizing:"border-box",
+          boxSizing: "border-box",
           bgcolor: "#1D8D94",
           borderRadius: "10px 0 0 10px",
           display: "flex",
           alignItems: "center",
-          justifyContent:"center",
-          gap:{xs:"16px" ,md:"27px"},
+          justifyContent: "center",
+          gap: { xs: "16px", md: "27px" },
           cursor: "pointer",
           userSelect: "none",
         }}
@@ -52,20 +61,24 @@ const NetworkSelect: React.FC<NetworkSelectProps> = ({
           sx={{
             color: "#fff",
             fontSize: "16px",
-            fontFamily:"NiramitBold"
+            fontFamily: "NiramitBold",
           }}
         >
           {value}
         </Typography>
-        <Box component="img" src={arrow} sx={{minWidth:"24px" , minHeight:"24px",mt:"2px"}}/>
+        <Box
+          component="img"
+          src={arrow}
+          sx={{ minWidth: "24px", minHeight: "24px", mt: "2px" }}
+        />
       </Box>
 
       {/* RIGHT INPUT FIELD */}
       <TextField
         value={address}
         onChange={(e) => onAddressChange(e.target.value)}
-        placeholder="Enter Address"
-        disabled={!editable} 
+        placeholder="Please Enter Address "
+        disabled={!editable}
         sx={{
           flex: 1,
           bgcolor: "#242C39",
@@ -73,8 +86,14 @@ const NetworkSelect: React.FC<NetworkSelectProps> = ({
           input: {
             color: "white",
             fontFamily: "NiramitBold",
-            fontSize: "16px",
-            pl:"19px" ,
+            fontSize: "14px",
+            pl: "19px",
+            "&::placeholder": {
+              color: "white !important",
+              opacity: 1,
+              fontSize: "14px",
+              fontFamily: "NiramitBold",
+            },
           },
           "& fieldset": {
             border: "none",

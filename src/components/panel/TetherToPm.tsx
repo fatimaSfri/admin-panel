@@ -5,17 +5,28 @@ import { CustomButton } from "../Use-everywhere/CustomButton";
 import SendReceiveForm from "./SendReceiveForm";
 import NetworkAndAddress from "./NetworkAndAddress";
 import ExchangeConditions from "./ExchangeConditions";
+import { useNavigate, useParams } from 'react-router-dom';
 
 interface Props {
   goToStep: (step: number) => void;
 }
 
 const TetherToPm = ({ goToStep }: Props) => {
+
   const info = [
     "any change in exchange rate on the binance exchange gives us the right to recalculate the amount of the application.",
     "the rate for your application will be fixed after 1 confirmation online.",
     "funds are credited after 20 transaction confirmations.",
   ];
+
+  const navigate = useNavigate();
+  const { step } = useParams(); 
+
+  const goToPaymentSuccess = () => {
+   navigate(`/home/step/${step}/payment`);
+  };
+
+
   return (
     <Box
       sx={{
@@ -41,7 +52,7 @@ const TetherToPm = ({ goToStep }: Props) => {
           <Typography
             sx={{ fontSize: "24px", color: "white", fontFamily: "NiramitBold" }}
           >
-            transaction details :
+            Transaction Details :
           </Typography>
           <PaymentTimer minutes={1} />
         </Box>
@@ -76,8 +87,7 @@ const TetherToPm = ({ goToStep }: Props) => {
             label="Payment"
             mt={-0.25}
             mb={0}
-            onClick={() => goToStep(2)}
-            to=""
+            onClick={goToPaymentSuccess}
           ></CustomButton>
           <CustomButton
             label="Non Payment"

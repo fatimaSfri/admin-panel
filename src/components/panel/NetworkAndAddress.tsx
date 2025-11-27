@@ -1,5 +1,5 @@
 import { Box, Typography } from "@mui/material"
-import NetworkInputSelect from "./DropDown&Input";
+import NetworkInputSelect from "./NetworkSelect";
 import QrScannerTS from "./QrScanner";
 
 const NetworkAndAddress = () => {
