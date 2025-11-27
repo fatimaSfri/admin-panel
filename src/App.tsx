@@ -15,6 +15,8 @@ import Welcome from "./components/Welcome";
 import Home from "./components/panel/Home";
 import UsdtPaymentSuccess from "./components/panel/payment/UsdtPaymentSuccess";
 import PaymentFiled from "./components/panel/payment/PaymentFiled";
+import PMPaymentSuccesse from "./components/panel/payment/PMPaymentSuccesse";
+import WaitingPayment from "./components/panel/payment/WaitingPayment";
 
 const App = () => {
   return (
@@ -38,6 +40,8 @@ const App = () => {
                   <Route path="step/:step">
                     <Route path="paymentSuccess" element={<UsdtPaymentSuccess />} />
                     <Route path="paymentFiled"   element={<PaymentFiled/>} />
+                    <Route path="pmPayment"   element={<PMPaymentSuccesse/>} />
+                    <Route path="waiting" element={<WaitingPayment/>} />
                   </Route>
                 </Route>
                 <Route path="/home" element={<Home />} /> 

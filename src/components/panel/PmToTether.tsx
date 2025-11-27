@@ -5,12 +5,19 @@ import SendReceiveForm from "./SendReceiveForm";
 import CustomInput from "../Use-everywhere/CustomInput";
 import NetworkSelect from "./NetworkSelect";
 import { CustomButton } from "../Use-everywhere/CustomButton";
+import { useNavigate, useParams } from "react-router-dom";
 
-interface Props {
-  goToStep: (step: number) => void;
-}
 
-const PmToTether = ({ goToStep }: Props) => {
+const PmToTether = () => {
+
+ const navigate = useNavigate();
+  const { step } = useParams(); 
+
+  const goToPaymentSuccess = () => {
+   navigate(`/home/step/${step}/waiting`);
+  };
+
+
   return (
     <Box
       sx={{
@@ -60,7 +67,7 @@ const PmToTether = ({ goToStep }: Props) => {
         </Box>
         
         
-        <CustomButton label="Submit" mt={0} mb="0" />
+        <CustomButton label="Submit" mt={0} mb="0"  onClick={goToPaymentSuccess}/>
         
       </BigBox>
     </Box>
