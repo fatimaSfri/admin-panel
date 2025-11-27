@@ -25,7 +25,7 @@ const NetworkAndAddress = () => {
                 color: "#ABABAB",
                 fontSize: "20px",
                 lineHeight: "46px",
-                letterSpacing: "0%",
+                letterSpacing: "0px",
                 textTransform: "capitalize",
               }}
             >

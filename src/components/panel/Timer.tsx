@@ -161,7 +161,7 @@ export default function FinalPerfectTimer({
             fontFamily: "NiramitBold",
             fontSize: "32px",
             lineHeight: "100%",
-            letterSpacing: "6%",
+            letterSpacing: "1.92px",
             textTransform: "capitalize",
             color: "#2DD69B",
             mt: "12px",
@@ -191,7 +191,7 @@ export default function FinalPerfectTimer({
             fontFamily: "NiramitBold",
             fontSize: "14px",
             lineHeight: "100%",
-            letterSpacing: "0%",
+            letterSpacing: "0px",
             textTransform: "capitalize",
             color: "white",
           }}

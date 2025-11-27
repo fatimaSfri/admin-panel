@@ -14,7 +14,7 @@ const CustomQuestion: React.FC<Content> = ({ question, answer, src }) => {
         fontFamily:"NiramitBold",
         fontSize: { xs: "12px", sm: "14px", lg: "16px" },
         lineHeight: "100%",
-        letterSpacing: "0%",
+        letterSpacing: "0px",
         textTransform: "capitalize",
         leadingTrim: "none",
         color: "#ABABAB",

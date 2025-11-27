@@ -53,16 +53,16 @@ const AgreeCheckbox = ({ checked, onChange }: AgreeCheckboxProps) => {
             fontWeight: 300,
             color: '#ffffff',
             lineHeight: '100%',
-            letterSpacing: '3%',
+            letterSpacing: '0.48px',
             ml: 1,
           }}
         >
           I Agree With The{' '}
           <span style={{ color: '#60A7F8',fontFamily:"NiramitBold",lineHeight: '100%',
-          letterSpacing: '3%', }}>AML Policy</span> And{' '}
+          letterSpacing: '0.48px', }}>AML Policy</span> And{' '}
           <span style={{ color: '#60A7F8',fontFamily:"NiramitBold",
             lineHeight: '100%',
-           letterSpacing: '3%',
+           letterSpacing: '0.48px',
            }}>User Agreement</span>.
         </Typography>
       }

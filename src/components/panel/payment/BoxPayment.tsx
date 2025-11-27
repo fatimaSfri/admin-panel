@@ -1,9 +1,14 @@
 import { Box, Typography } from "@mui/material"
 import BigBox from "../BigBox"
-import PaymentTimer from "../Timer";
 import SendReceiveForm from "../SendReceiveForm";
 
-const BoxPayment = () => {
+interface WrapperProps {
+  children: React.ReactNode; 
+}
+
+const BoxPayment:React.FC<WrapperProps> = ({
+    children
+}) => {
   return (
     <Box
       sx={{
@@ -13,10 +18,9 @@ const BoxPayment = () => {
         minHeight: "100vh",
         flexGrow: 1,
         alignItems: "center",
-        border:"2px solid red"
       }}
     >
-      <BigBox padding="91px 77px 164px 78px ">
+      <BigBox padding="91px 78px 66px 78px ">
         <Box
           sx={{
             display: "flex",
@@ -37,13 +41,18 @@ const BoxPayment = () => {
             display: "flex",
             flexDirection: "column",
             gap: "16px",
+            p:0,
+            m:0,
+            boxSizing:"border-box"
           }}
         >
           {/* MoneyTransfer */}
-          <SendReceiveForm mt="11px" />
+          <SendReceiveForm  />
        </Box>
        </Box>
-        
+       <Box sx={{mt:"25px"}}>
+       {children}  
+       </Box>
       </BigBox>
     </Box>
 

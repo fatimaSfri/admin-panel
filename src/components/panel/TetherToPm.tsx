@@ -7,11 +7,8 @@ import NetworkAndAddress from "./NetworkAndAddress";
 import ExchangeConditions from "./ExchangeConditions";
 import { useNavigate, useParams } from 'react-router-dom';
 
-interface Props {
-  goToStep: (step: number) => void;
-}
 
-const TetherToPm = ({ goToStep }: Props) => {
+const TetherToPm = () => {
 
   const info = [
     "any change in exchange rate on the binance exchange gives us the right to recalculate the amount of the application.",
@@ -23,9 +20,12 @@ const TetherToPm = ({ goToStep }: Props) => {
   const { step } = useParams(); 
 
   const goToPaymentSuccess = () => {
-   navigate(`/home/step/${step}/payment`);
+   navigate(`/home/step/${step}/paymentSuccess`);
   };
 
+   const goToPaymentFiled = () => {
+   navigate(`/home/step/${step}/paymentFiled`);
+  };
 
   return (
     <Box
@@ -93,7 +93,7 @@ const TetherToPm = ({ goToStep }: Props) => {
             label="Non Payment"
             mt={-0.25}
             mb={0}
-            onClick={() => goToStep(2)}
+            onClick={goToPaymentFiled}
             color="primary"
           ></CustomButton>
         </Box>

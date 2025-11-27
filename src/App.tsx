@@ -14,6 +14,7 @@ import ChangePassword from "./components/login/ChangePassword";
 import Welcome from "./components/Welcome";
 import Home from "./components/panel/Home";
 import UsdtPaymentSuccess from "./components/panel/payment/UsdtPaymentSuccess";
+import PaymentFiled from "./components/panel/payment/PaymentFiled";
 
 const App = () => {
   return (
@@ -35,14 +36,11 @@ const App = () => {
               <Routes>
                 <Route path="/home" element={<Home />}>
                   <Route path="step/:step">
-                    {/* داخل stepها */}
-                    <Route path="payment" element={<UsdtPaymentSuccess />} />
-                    {/* اگه بخوای stepهای دیگه هم داشته باشی */}
-                    {/* <Route index element={<StepContent />} /> */}
+                    <Route path="paymentSuccess" element={<UsdtPaymentSuccess />} />
+                    <Route path="paymentFiled"   element={<PaymentFiled/>} />
                   </Route>
                 </Route>
-                {/* یا اگه home بدون step هم داری */}
-                <Route path="/home" element={<Home />} /> {/* این بیرون باشه */}
+                <Route path="/home" element={<Home />} /> 
               </Routes>
               
               <Routes>

@@ -27,7 +27,7 @@ const AppBrand = () => {
           fontStyle: "normal",
           fontSize: { xs: 16, lg: 20 },
           lineHeight: "100%",
-          letterSpacing: "20%",
+          letterSpacing: "4px",
           background:
             "linear-gradient(89.99deg, #1D8D94 30.54%, #99D9A6 99.99%)",
           backgroundClip: "text",
