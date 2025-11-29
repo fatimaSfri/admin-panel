@@ -35,7 +35,7 @@ const RegisterUI: React.FC = () => {
       dispatch(addUser(newUser));
 
       setStrength("");
-      navigate("/auth/home");
+      navigate("/dashboard");
     },
   });
 
