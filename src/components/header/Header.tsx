@@ -7,13 +7,12 @@ import MenuItems from "./MenuItems";
 export default function Header() {
   return (
     <AppBar elevation={0}>
-      <Toolbar
-        sx={{ alignItems: "center", justifyContent: "center" }}
-      >
+      <Toolbar sx={{ alignItems: "center", justifyContent: "center" }}>
         <Box
           sx={{
-            width: { xs: "97%", lg: "85%", xl: "75%" },
             maxWidth: "1140px",
+            boxSizing: "border-box",
+            width: { xs: "94%", md: "100%" },
             mx: "auto ",
             display: "flex",
             alignItems: "center",
