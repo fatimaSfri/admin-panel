@@ -1,21 +1,22 @@
 import { Box } from "@mui/material";
 import SidebarMenu from "./SidebarMenu";
-import TableBox from "./TableBox"
+import { Outlet } from "react-router-dom";
 
 const Dashboard = () => {
   return (
     <Box
       sx={{
-        maxWidth: "1140px",
+        maxWidth:{xs:"850px" , lg:"1140px"},
         boxSizing: "border-box",
         width: { xs: "94%", md: "100%" },
-        border: "2px solid red",
         mx: "auto",
         mt: "140px",
-        height: "100vh",
+        mb:"48px",
+        minHeight: "100vh",
         display: "flex",
-        flexDirection:{xs:"column" ,md:"row"},
+        flexDirection:{xs:"column" ,lg:"row"},
         gap: "20px",
+        overflow:"auto"
       }}
     >
       {/* left box */}
@@ -27,14 +28,17 @@ const Dashboard = () => {
           maxWidth:{md:"850px"},
           boxSizing: "border-box",
           width: "100%" ,
-          border: "2px solid red",
           borderRadius: "20px",
           backgroundColor: "rgba(250, 250, 250, 0.025)",
           backdropFilter: "blur(20px)",
-          mx:{xs:"auto"}
+          mx:{xs:"auto"},
+          padding:"20px 16px 27px 22px",
+          
+        
         }}
       >
-       <TableBox/>
+       {/* <TableBox/> */}
+       <Outlet/>
       </Box>
     </Box>
   );

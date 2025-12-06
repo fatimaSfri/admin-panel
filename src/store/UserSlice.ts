@@ -24,7 +24,7 @@ const initialState: UserState = {
   currentUser: savedUser ? JSON.parse(savedUser) : null,
   rememberMe: false,
   errors: {},
-  userForgot:null,
+  userForgot: null,
 };
 
 const userSlice = createSlice({
@@ -36,51 +36,64 @@ const userSlice = createSlice({
       state.items.push(action.payload);
     },
     loginUser: (state, action: PayloadAction<{ email: string; password: string; rememberMe: boolean }>) => {
-  const { email, password, rememberMe } = action.payload;
-  state.errors = {}; 
+      const { email, password, rememberMe } = action.payload;
+      state.errors = {};
 
-  const user = state.items.find(u => u.email === email);
-  if (!user) {
-    state.errors.email = 'The Email Entered Is Invalid '; 
-    state.currentUser = null;
-    return;
-  }
-  if (user.password !== password) {
-    state.errors.password = 'The Password Entered Is Invalid';
-    state.currentUser = null;
-    return;
-  }
-  if(user && user.password === password){
-   state.currentUser = user;
-  state.rememberMe = rememberMe;
+      const user = state.items.find(u => u.email === email);
+      if (!user) {
+        state.errors.email = 'The Email Entered Is Invalid ';
+        state.currentUser = null;
+        return;
+      }
+      if (user.password !== password) {
+        state.errors.password = 'The Password Entered Is Invalid';
+        state.currentUser = null;
+        return;
+      }
+      if (user && user.password === password) {
+        state.currentUser = user;
+        state.rememberMe = rememberMe;
 
-   if (rememberMe) {
-    localStorage.setItem('currentUser', JSON.stringify(user));
-  } else {
-    localStorage.removeItem('currentUser');
-  }
-  }
-},
- checkEmail:(state, action: PayloadAction<{email:string;}>) =>{
-  const { email } = action.payload;
-  state.errors = {}; 
-  const user = state.items.find(u => u.email === email);
-  if (user) {
-    state.userForgot = user;
-  }else{
-     state.errors.email = 'The Email Entered Is Invalid'; 
-     state.userForgot = null;
-  }},
-  resetPassword(state, action: PayloadAction<{ password: string }>) {
-  const { password } = action.payload;
-  if (state.userForgot) {
-    const index = state.items.findIndex(u => u.email === state.userForgot!.email);
-    if (index !== -1) {
-      state.items[index].password = password;
+        if (rememberMe) {
+          localStorage.setItem('currentUser', JSON.stringify(user));
+        } else {
+          localStorage.removeItem('currentUser');
+        }
+      }
+    },
+    checkEmail: (state, action: PayloadAction<{ email: string; }>) => {
+      const { email } = action.payload;
+      state.errors = {};
+      const user = state.items.find(u => u.email === email);
+      if (user) {
+        state.userForgot = user;
+      } else {
+        state.errors.email = 'The Email Entered Is Invalid';
+        state.userForgot = null;
+      }
+    },
+    resetPassword(state, action: PayloadAction<{ password: string }>) {
+      const { password } = action.payload;
+      if (state.userForgot) {
+        const index = state.items.findIndex(u => u.email === state.userForgot!.email);
+        if (index !== -1) {
+          state.items[index].password = password;
+        }
+      }
+    },
+
+   updateUser(state, action: PayloadAction<UserInfo>) {
+      const updated = action.payload;
+      const index = state.items.findIndex(
+        u => u.email === state.currentUser?.email
+      );
+      if (index !== -1) {
+        state.items[index] = updated;
+      }
+      state.currentUser = updated;
     }
   }
-}
-}
+  
 });
 
 
@@ -93,5 +106,5 @@ const persistConfig = {
 
 const userReducer = persistReducer<UserState>(persistConfig, userSlice.reducer);
 
-export const { addUser , loginUser , checkEmail , resetPassword} = userSlice.actions;
+export const { addUser, loginUser, checkEmail, resetPassword ,updateUser} = userSlice.actions;
 export default userReducer;  

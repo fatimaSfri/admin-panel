@@ -17,6 +17,8 @@ import PaymentFiled from "./components/panel/payment/PaymentFiled";
 import PMPaymentSuccesse from "./components/panel/payment/PMPaymentSuccesse";
 import WaitingPayment from "./components/panel/payment/WaitingPayment";
 import Dashboard from "./components/panel/dashboard/Dashboard";
+import TableBox  from "./components/panel/dashboard/TableBox";
+import EditeProfile from "./components/panel/dashboard/EditeProfile";
 
 const App = () => {
   return (
@@ -47,6 +49,12 @@ const App = () => {
                 <Route path="/" element={<Home />} /> 
               </Routes>
               
+                <Routes>
+                  <Route path="/dashboard" element={<Dashboard/>} >
+                   <Route path="table" index element={<TableBox/>}/>
+                   <Route path="edite-profile" index element={<EditeProfile/>}/>
+                </Route>
+                </Routes>
               <Routes>
                 <Route path="auth/login" element={<LoginUI />} />
                 <Route path="auth/register" element={<RegisterUI />} />
@@ -54,7 +62,6 @@ const App = () => {
                   <Route index element={<ForgetPassword />} />
                   <Route path="ChangePass" element={<ChangePassword />} />
                 </Route>
-                <Route path="dashboard" element={<Dashboard/>} />
               </Routes>
               <CopyrightFooter></CopyrightFooter>
             </Stack>
