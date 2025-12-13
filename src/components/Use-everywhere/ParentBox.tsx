@@ -2,10 +2,20 @@ import { Box, Card } from "@mui/material"
 
 interface WrapperProps {
   children: React.ReactNode; 
+  pb?: number | string
+  pt?: number | string
+  pr?: number | string
+  pl?: number | string
+  mb?: number | string
 }
 
 const Parent:React.FC<WrapperProps> = ({
     children,
+    pb=5,
+    pt=5,
+    pr=4.5,
+    pl=4.5,
+    mb=0
 }) => {
   return (
       <Card
@@ -17,7 +27,9 @@ const Parent:React.FC<WrapperProps> = ({
           backdropFilter: "blur(20px)",
           borderRadius: "30px",
           mx: "auto",
-          py: 5,
+          pb,
+          pt,
+          mb
         }}
       >
         <Box
@@ -26,7 +38,8 @@ const Parent:React.FC<WrapperProps> = ({
             flexDirection: "column",
             justifyContent: "center",
             gap: 2,
-            px: 4.5, 
+            pr,
+            pl,
             mx:"auto"
           }}
         >

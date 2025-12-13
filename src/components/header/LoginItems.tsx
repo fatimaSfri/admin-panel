@@ -22,6 +22,7 @@ const ProfileItems = () => {
       <Box component="img" src={vector} alt="icon" sx={{ mr: 0.5 }} />
 
       {userName ? (
+        <Link to="dashboard" style={{ textDecoration: 'none' }}>
         <Typography
           sx={{
             color: "white",
@@ -31,6 +32,7 @@ const ProfileItems = () => {
         >
           {userName}
         </Typography>
+        </Link>
       ) : (
         <>
           {LOGIN_ITEMS.map((page, index) => (

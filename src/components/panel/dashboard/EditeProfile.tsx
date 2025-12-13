@@ -1,23 +1,40 @@
 import React, { useState } from "react";
 import { Box, Typography } from "@mui/material";
-import { useInfoDispatch } from "../../../store/hooks";
-import { type UserInfo, addUser } from "../../../store/UserSlice";
+import { useInfoDispatch, useInfoSelector } from "../../../store/hooks";
+import { type UserInfo , updateUser } from "../../../store/UserSlice";
 import CustomInput from "../../Use-everywhere/CustomInput";
 import { PasswordInput } from "../../login/PasswordInput";
 import { CustomButton } from "../../Use-everywhere/CustomButton";
 import { useFormik } from "formik";
 import { toFormikValidationSchema } from "zod-formik-adapter";
 import { registerSchema, type RegisterData } from "../../../schemas/register";
-import { useNavigate } from "react-router-dom";
+
 
 const EditeProfile = () => {
-  const dispatch = useInfoDispatch();
-  const navigate = useNavigate();
-  const [strength, setStrength] = useState<string>("");
+
+ const dispatch = useInfoDispatch();
+ const [strength, setStrength] = useState<string>("");
   const [showPasswordStrength, setShowPasswordStrength] = useState(false);
 
+   const userName = useInfoSelector((state) =>
+      state.user.items.length > 0
+        ? state.user.items[state.user.items.length - 1].userName
+        : ""
+    );
+     const Emaile = useInfoSelector((state) =>
+      state.user.items.length > 0
+        ? state.user.items[state.user.items.length - 1].email
+        : ""
+    );
+    
+     const pass = useInfoSelector((state) =>
+      state.user.items.length > 0
+        ? state.user.items[state.user.items.length - 1].password
+        : ""
+    );
+
   const formik = useFormik<RegisterData>({
-    initialValues: { name: "", email: "", password: "" },
+    initialValues: { name: userName, email:Emaile , password:pass },
     validationSchema: toFormikValidationSchema(registerSchema),
     validateOnChange: false,
     validateOnBlur: true,
@@ -27,11 +44,9 @@ const EditeProfile = () => {
         email: values.email,
         password: values.password,
       };
-
-      dispatch(addUser(newUser));
-
+      dispatch(updateUser(newUser));
       setStrength("");
-      navigate("/dashboard");
+  
     },
   });
 

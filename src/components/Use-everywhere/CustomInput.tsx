@@ -11,6 +11,8 @@ interface EmailInputProps {
   lable?:string;
   placeholder?:string;
   mb?:string
+  multiline?: boolean;
+  rows?: number;
 }
 
 const CustomInput: React.FC<EmailInputProps> = ({
@@ -22,7 +24,9 @@ const CustomInput: React.FC<EmailInputProps> = ({
   helperText ,
   lable='Email :',
   placeholder='Please Enter Your Email',
-  mb="15px"
+  mb="15px",
+  multiline = false,
+  rows,
 }) => {
   return (
     <Box>
@@ -38,23 +42,33 @@ const CustomInput: React.FC<EmailInputProps> = ({
         placeholder={placeholder}
         variant="outlined"
         error={error}
+        multiline={multiline}
+        rows={multiline ? rows : undefined}
         helperText={error ? helperText : ""}
         InputProps={{
           sx: {
             bgcolor: "#242C39",
             borderRadius: "8px",
-            height:"57px",
+           height: multiline ? "149px" : "57px",
             boxSizing:"border-box",
             color: "#fff",
-            "& input::placeholder": {
+            alignItems: multiline ? "flex-start" : "center",
+            pt: multiline ? "12px" : "15px", 
+            px: multiline ? "18px" : "4px", 
+            py: multiline ? "12px" : 0,
+            "& input:-webkit-autofill, & textarea:-webkit-autofill": {
+                WebkitBoxShadow: "0 0 0 1000px #242C39 inset !important", 
+                WebkitTextFillColor: "#fff !important", 
+                transition: "background-color 5000s ease-in-out 0s", 
+            },
+            "& textarea::placeholder, & input::placeholder": {
               color: "#fff",
               opacity: 1,
               fontSize: { xs: '12px', lg: '14px' },
               fontFamily:"NiramitBold",
               textTransform:"capitalize"
             },
-            fontSize: { xs: '12px', lg: '14px' },
-            px: "2px",
+            fontSize: { xs: '12px', lg: '16px' },
           },
           endAdornment: error ? (
             <IconButton aria-label="clear" sx={{ color: '#F66066', mr: 1 }}>
@@ -63,11 +77,12 @@ const CustomInput: React.FC<EmailInputProps> = ({
           ) : null,
         }}
         sx={{
-          mb: 2,
+          mb: 2.35,
           "& .MuiOutlinedInput-root": {
             "& fieldset": { border: error ? "2px solid #F66066" : "none" },
           },
           "& .MuiFormHelperText-root.Mui-error": { color: '#F66066', fontSize: { xs: "12px", lg: "14px" }, ml: '-1px' },
+
         }}
       />
     </Box>
@@ -75,3 +90,4 @@ const CustomInput: React.FC<EmailInputProps> = ({
 };
 
 export default CustomInput;
+

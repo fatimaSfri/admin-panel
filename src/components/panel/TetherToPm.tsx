@@ -8,6 +8,8 @@ import ExchangeConditions from "./ExchangeConditions";
 import { useNavigate, useParams } from 'react-router-dom';
 
 
+
+
 const TetherToPm = () => {
 
   const info = [

@@ -18,9 +18,9 @@ const SidebarMenu = () => {
       const [selected, setSelected] = useState("dashboard");
 
   const menuItems = [
-    { title: "Dashboard", icon: DashboardIcon , link:"table" },
+    { title: "Dashboard", icon: DashboardIcon , link:"" },
     { title: "Profile", icon: ProfileIcon , link:"edite-profile" },
-    { title: "Partner Program", icon: PartnerIcon  , link:"table"},
+    { title: "Partner Program", icon: PartnerIcon  , link:"partner-program"},
     { title: "Exit", icon: ExitIcon  , link:"table"},
   ];
 
@@ -143,58 +143,3 @@ export default SidebarMenu
 
 
 
-
-// next way
-  {/* Left Menu */}
-// //       <Box
-// //         sx={{
-// //           maxWidth: "270px",
-// //           width: "100%",
-// //           height: "294px",
-// //           borderRadius: "20px",
-// //           backgroundColor: "rgba(250, 250, 250, 0.025)",
-// //           backdropFilter: "blur(20px)",
-// //           padding: "38px 73px 45px 32px",
-// //           boxSizing: "border-box",
-// //         }}
-// //       >
-// //         <Box
-// //           sx={{
-// //             display: "flex",
-// //             flexDirection: "column",
-// //             gap: "40px", // ← فقط فاصله بین آیتم‌ها
-// //             height: "100%",
-// //             boxSizing: "border-box",
-// //           }}
-// //         >
-// //           {menuItems.map((item, index) => {
-// //             const Icon = item.icon;
-// //             return (
-// //               <Box
-// //                 key={index}
-// //                 onClick={() => setSelected(item.title)}
-// //                 sx={{
-// //                   display: "flex",
-// //                   alignItems: "center",
-// //                   gap: "16px",
-// //                   cursor: "pointer",
-// //                   color: selected === item.title ? "white" : "#ABABAB",
-// //                   userSelect: "none",
-// //                 }}
-// //               >
-// //                 <Box sx={{ width: 18, height: 18 }}>
-// //                   <Icon />
-// //                 </Box>
-// //                 <Typography
-// //                   sx={{
-// //                     fontSize: "18px",
-// //                     fontFamily: selected === item.title ? "NiramitSemiBold" : "inherit",
-// //                   }}
-// //                 >
-// //                   {item.title}
-// //                 </Typography>
-// //               </Box>
-// //             );
-// //           })}
-// //         </Box>
-// //       </Box>

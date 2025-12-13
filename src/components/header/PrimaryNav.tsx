@@ -1,8 +1,10 @@
 import { Box, Button, Stack } from "@mui/material";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { NAV_ITEMS } from "./navigation";
 
 const PrimaryNav = () => {
+    const location = useLocation();
+
   return (
     <Stack
       direction="row"
@@ -10,7 +12,11 @@ const PrimaryNav = () => {
       sx={{ display: { xs: "none", md: "flex" } }}
       alignItems="center"
     >
-      {NAV_ITEMS.map((page) => (
+      {NAV_ITEMS.map((page) => {
+        const isActive =
+          location.pathname === page.src ||
+          location.pathname.startsWith(page.src + "/");
+          return (
         <Link to={page.src} key={page.name} style={{ textDecoration: "none" }}>
           <Button
             sx={{
@@ -41,7 +47,7 @@ const PrimaryNav = () => {
               },
             }}
           >
-            {page.src !== "#" && location.pathname.includes(page.src) ? (
+            {isActive ? (
               <Box
                 sx={{
                   minWidth: "8px",
@@ -58,7 +64,7 @@ const PrimaryNav = () => {
             {page.name}
           </Button>
         </Link>
-      ))}
+      )})}
     </Stack>
   );
 };

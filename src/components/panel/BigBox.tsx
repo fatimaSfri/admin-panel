@@ -25,7 +25,7 @@ const BigBox:React.FC<WrapperProps> = ({
          flexDirection:"column",   
          gap:"43px",
          mb:"95px",
-         overflow:"visible"
+         overflow:"visible",
         }}
       >
           {children}

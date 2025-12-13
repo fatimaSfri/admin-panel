@@ -83,3 +83,86 @@ export const ExitIcon = (props: React.SVGProps<SVGSVGElement>) => {
     </svg>
   );
 };
+
+export const Diamond = (props: React.SVGProps<SVGSVGElement>) => {
+  return (
+    <svg
+      width="31"
+      height="31"
+      viewBox="0 0 31 31"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
+      <path
+        d="M2.5835 12.916L6.98326 6.31637C7.46238 5.59769 8.26897 5.16602 9.13272 5.16602H15.5002M2.5835 12.916L15.5002 25.8327M2.5835 12.916H28.4168M15.5002 5.16602L20.6668 12.916L15.5002 25.8327M15.5002 5.16602L10.3335 12.916L15.5002 25.8327M15.5002 5.16602H21.8676C22.7313 5.16602 23.5379 5.59769 24.017 6.31637L28.4168 12.916M15.5002 25.8327L28.4168 12.916"
+        stroke="currentColor"
+        stroke-width="1.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </svg>
+  );
+};
+
+export const GreenDiamond = (props: React.SVGProps<SVGSVGElement>) => {
+  return (
+    <svg
+      width="22"
+      height="22"
+      viewBox="0 0 31 31"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
+      <path
+        d="M2.5835 12.916L6.98326 6.31637C7.46238 5.59769 8.26897 5.16602 9.13272 5.16602H15.5002M2.5835 12.916L15.5002 25.8327M2.5835 12.916H28.4168M15.5002 5.16602L20.6668 12.916L15.5002 25.8327M15.5002 5.16602L10.3335 12.916L15.5002 25.8327M15.5002 5.16602H21.8676C22.7313 5.16602 23.5379 5.59769 24.017 6.31637L28.4168 12.916M15.5002 25.8327L28.4168 12.916"
+        stroke="currentColor"
+        stroke-width="2.2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </svg>
+  );
+};
+
+export const FriendsIcon = () => {
+  return (
+    <svg
+      width="28"
+      height="25"
+      viewBox="0 0 28 25"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M0.75 24V18.8333C0.75 17.4066 1.9066 16.25 3.33333 16.25H16.25C17.6768 16.25 18.8333 17.4066 18.8333 18.8333V24M18.8333 0.75C19.9447 1.03455 20.9297 1.6809 21.6332 2.58715C22.3366 3.4934 22.7184 4.60799 22.7184 5.75521C22.7184 6.90243 22.3366 8.01702 21.6332 8.92327C20.9297 9.82951 19.9447 10.4759 18.8333 10.7604M22.7083 16.25H24C25.4268 16.25 26.5833 17.4066 26.5833 18.8333V24M14.9583 5.91667C14.9583 8.77014 12.6451 11.0833 9.79167 11.0833C6.93819 11.0833 4.625 8.77014 4.625 5.91667C4.625 3.06319 6.93819 0.75 9.79167 0.75C12.6451 0.75 14.9583 3.06319 14.9583 5.91667Z"
+        stroke="white"
+        stroke-width="1.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </svg>
+  );
+};
+
+export const CloseIcon = (props: React.SVGProps<SVGSVGElement>) => {
+  return (
+    <svg
+      width="18"
+      height="18"
+      viewBox="0 0 31 31"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
+      <path
+        d="M3.75 3.75L27.0833 27.0833M3.75 27.0833L27.0833 3.75"
+        stroke="currentColor"
+        stroke-width="1.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </svg>
+  );
+};

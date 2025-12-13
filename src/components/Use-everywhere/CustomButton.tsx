@@ -15,6 +15,7 @@ interface CustomButtonProps extends Omit<ButtonProps, 'sx' | 'children'> {
   color?: OverridableStringUnion<CustomButtonColor, ButtonPropsColorOverrides>;
   to?:To
   width ?:string
+  maxWidth?:string
 }
 
 export const CustomButton: React.FC<CustomButtonProps> = ({ 
@@ -24,7 +25,8 @@ export const CustomButton: React.FC<CustomButtonProps> = ({
   onClick, 
   color="#1D8D94",
   to,
-  width={xs:"90%" , sm:"100%"}
+  width={xs:"90%" , sm:"100%"},
+  maxWidth="560px"
 }) => (
   <Button
    component={to ? Link : 'button'}   
@@ -33,7 +35,7 @@ export const CustomButton: React.FC<CustomButtonProps> = ({
     onClick={onClick}
     sx={{
       width:width ,
-      maxWidth:"560px",
+      maxWidth,
       boxSizing:"border-box",
       fontFamily:"NiramitBold",
       height: 60,

@@ -33,9 +33,7 @@ const Dashboard = () => {
           backdropFilter: "blur(20px)",
           mx:{xs:"auto"},
           padding:"20px 16px 27px 22px",
-          
-        
-        }}
+          }}
       >
        {/* <TableBox/> */}
        <Outlet/>

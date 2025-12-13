@@ -17,8 +17,10 @@ import PaymentFiled from "./components/panel/payment/PaymentFiled";
 import PMPaymentSuccesse from "./components/panel/payment/PMPaymentSuccesse";
 import WaitingPayment from "./components/panel/payment/WaitingPayment";
 import Dashboard from "./components/panel/dashboard/Dashboard";
-import TableBox  from "./components/panel/dashboard/TableBox";
+import TableBox from "./components/panel/dashboard/TableBox";
 import EditeProfile from "./components/panel/dashboard/EditeProfile";
+import PartnerProgram from "./components/panel/dashboard/PartnerProgram";
+import ContactUs from "./components/panel/landing/ContactUs";
 
 const App = () => {
   return (
@@ -31,30 +33,30 @@ const App = () => {
               sx={{ bgcolor: "primary.main", minHeight: "100vh" }}
             >
               <Header></Header>
-              {/* <Routes>
-                <Route path="/home/step/:step" element={<Home />} />
-                <Route path="home" element={<Home />} /> 
-                <Route path="/home/st/payment" element={<UsdtPaymentSuccess/>} />
-              </Routes> */}
 
               <Routes>
-                <Route path="/home" element={<Home />}>
-                  <Route path="step/:step">
-                    <Route path="paymentSuccess" element={<UsdtPaymentSuccess />} />
-                    <Route path="paymentFiled"   element={<PaymentFiled/>} />
-                    <Route path="pmPayment"   element={<PMPaymentSuccesse/>} />
-                    <Route path="waiting" element={<WaitingPayment/>} />
+                <Route path="/" element={<Home />}>
+                  <Route path="home/step/:step">
+                    <Route
+                      path="paymentSuccess"
+                      element={<UsdtPaymentSuccess />}
+                    />
+                    <Route path="paymentFiled" element={<PaymentFiled />} />
+                    <Route path="pmPayment" element={<PMPaymentSuccesse />} />
+                    <Route path="waiting" element={<WaitingPayment />} />
                   </Route>
                 </Route>
-                <Route path="/" element={<Home />} /> 
+
+                <Route path="contact-us" element={<ContactUs />} />
               </Routes>
-              
-                <Routes>
-                  <Route path="/dashboard" element={<Dashboard/>} >
-                   <Route path="table" index element={<TableBox/>}/>
-                   <Route path="edite-profile" index element={<EditeProfile/>}/>
+
+              <Routes>
+                <Route path="/dashboard" element={<Dashboard />}>
+                  <Route index element={<TableBox />} />
+                  <Route path="edite-profile" element={<EditeProfile />} />
+                  <Route path="partner-program" element={<PartnerProgram />} />
                 </Route>
-                </Routes>
+              </Routes>
               <Routes>
                 <Route path="auth/login" element={<LoginUI />} />
                 <Route path="auth/register" element={<RegisterUI />} />
