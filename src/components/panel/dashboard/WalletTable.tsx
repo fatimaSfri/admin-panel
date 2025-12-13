@@ -148,7 +148,7 @@ export default function WalletTable() {
           <RoundedPagination
             count={totalPages}
             page={page}
-            onChange={(e, val) => setPage(val)}
+            onChange={(_, val) => setPage(val)}
             siblingCount={1}
             boundaryCount={1}
             hidePrevButton

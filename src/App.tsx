@@ -21,6 +21,8 @@ import TableBox from "./components/panel/dashboard/TableBox";
 import EditeProfile from "./components/panel/dashboard/EditeProfile";
 import PartnerProgram from "./components/panel/dashboard/PartnerProgram";
 import ContactUs from "./components/panel/landing/ContactUs";
+import AboutUs from "./components/panel/landing/AboutUs";
+import FAQ from "./components/panel/landing/FAQ";
 
 const App = () => {
   return (
@@ -47,7 +49,9 @@ const App = () => {
                   </Route>
                 </Route>
 
+                <Route path="about" element={<AboutUs />} />
                 <Route path="contact-us" element={<ContactUs />} />
+                <Route path="faq" element={<FAQ />} />
               </Routes>
 
               <Routes>
