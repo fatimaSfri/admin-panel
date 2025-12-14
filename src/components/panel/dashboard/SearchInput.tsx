@@ -1,4 +1,5 @@
 import { Box, InputAdornment, TextField } from "@mui/material";
+import searchIcon from "../../../assets/img/search-icon.svg"
 
 const SearchInput = () => {
   return (
@@ -44,7 +45,7 @@ const SearchInput = () => {
             <InputAdornment position="start">
               <Box
                 component="img"
-                src="../../../../src/assets/img/search-icon.svg"
+                src={searchIcon}
                 sx={{ width: 20, height: 20 }}
               />
             </InputAdornment>

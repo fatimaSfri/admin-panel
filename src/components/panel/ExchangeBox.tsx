@@ -7,6 +7,9 @@ import { ExchangeField } from "./ExchangeField";
 import { CustomButton } from "../Use-everywhere/CustomButton";
 import { useInfoDispatch } from "../../store/hooks";
 import { setExchangeData } from "../../store/ExchangeSlice";
+import icon from "../../../assets/img/Group.png"
+import pmIcon from "../../../assets/img/PM2.svg"
+import TetherIcon from "../../../assets/img/tether2.svg"
 
 interface Props {
   goToStep: (step: number) => void;
@@ -17,13 +20,13 @@ const currencyOptions = [
     label: "USDT (TRC20)",
     value: "USDT",
     rateToUSD: 1,
-    icon: "../../../src/assets/img/tether2.svg",
+    icon:TetherIcon ,
   },
   {
     label: "Perfect Money",
     value: "Perfect Money",
     rateToUSD: 0.98,
-    icon: "../../../src/assets/img/PM2.svg",
+    icon:pmIcon,
   },
 ];
 
@@ -141,7 +144,7 @@ const convertNumber = (
       >
         <Box
           component="img"
-          src="../../../src/assets/img/Group.png"
+          src={icon}
           alt="icon"
           sx={{
         height:"19px"

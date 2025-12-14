@@ -1,7 +1,6 @@
-// src/store/slices/exchangeSlice.ts
 import { createSlice,type PayloadAction } from '@reduxjs/toolkit';
 import { persistReducer } from 'redux-persist';
-import storage from 'redux-persist/lib/storage'; // localStorage
+import storage from 'redux-persist/lib/storage'; 
 
 interface Currency {
   label: string;
