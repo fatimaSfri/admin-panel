@@ -6,22 +6,13 @@ import { SearchIcon } from "../dashboard/Icon";
 import { CustomButton } from "../../Use-everywhere/CustomButton";
 import ButtonTag from "./ButtonTag";
 import QuestionBox from "./QuestionBox";
+import { PageWrapper } from "./StyledAbout";
 
 const FAQ = () => {
 
   return (
-    <Box
-      sx={{
-        width: { xs: 11 / 12, lg: 12 / 12 },
-        display: "flex",
-        flexDirection: "column",
-        minHeight: "100vh",
-        flexGrow: 1,
-        alignItems: "center",
-        mt: "140px",
-        mx: "auto",
-      }}
-    >
+  
+    <PageWrapper>
       <BigBox padding="59px 96px 64px" mb="54px">
         <Box mx="auto">
           <GradientText fontSizeLg="48px" fontSizeXs="28px">
@@ -60,7 +51,7 @@ const FAQ = () => {
         <ButtonTag></ButtonTag>
       </BigBox>
       <QuestionBox></QuestionBox>
-    </Box>
+  </PageWrapper>
   )
 };
 

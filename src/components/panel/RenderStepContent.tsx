@@ -19,11 +19,11 @@ const RenderStepContent = ({ step, goToStep }: StepContentProps) => {
   
   if (step === 2) {
    
-    if (exchangeData.fromCurrency.value === "USDT") {
+    if (exchangeData?.fromCurrency.value === "USDT") {
       return <TetherToPm />;
     }
     
-    if (exchangeData.fromCurrency.value === "Perfect Money") {
+    if (exchangeData?.fromCurrency.value === "Perfect Money") {
       return <PmToTether />;
     }
 

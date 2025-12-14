@@ -19,7 +19,7 @@ const ProfileItems = () => {
         visibility: { xs: "hidden", sm: "visible" },
       }}
     >
-      <Box component="img" src={vector} alt="icon" sx={{ mr: 0.5 }} />
+      <Box component="img" src={vector} alt="icon" sx={{mr:"13px" }} />
 
       {userName ? (
         <Link to="dashboard" style={{ textDecoration: 'none' }}>
