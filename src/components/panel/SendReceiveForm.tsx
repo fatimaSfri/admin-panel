@@ -9,6 +9,9 @@ interface SendReceiveFormProps {
 const SendReceiveForm: React.FC<SendReceiveFormProps> = ({ mt }) => {
   const exchangeData = useInfoSelector((state) => state.exchange.data);
 
+  if (!exchangeData) {
+    return <Box sx={{ mt }}>Loading Exchange Data...</Box>;
+  }
   return (
     <>
       <Box

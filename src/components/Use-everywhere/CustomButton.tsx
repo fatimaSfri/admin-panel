@@ -16,6 +16,8 @@ interface CustomButtonProps extends Omit<ButtonProps, 'sx' | 'children'> {
   to?:To
   width ?:string
   maxWidth?:string
+  customFontSize?:string | number;
+  customHight?:string | number;
 }
 
 export const CustomButton: React.FC<CustomButtonProps> = ({ 
@@ -26,7 +28,9 @@ export const CustomButton: React.FC<CustomButtonProps> = ({
   color="#1D8D94",
   to,
   width={xs:"90%" , sm:"100%"},
-  maxWidth="560px"
+  maxWidth="560px",
+  customFontSize="16px",
+  customHight=60
 }) => (
   <Button
    component={to ? Link : 'button'}   
@@ -38,11 +42,11 @@ export const CustomButton: React.FC<CustomButtonProps> = ({
       maxWidth,
       boxSizing:"border-box",
       fontFamily:"NiramitBold",
-      height: 60,
+      height: customHight,
       backgroundColor: color,
       boxShadow: "0px 0px 20px 0px #1D8D9480",
       color: "white",
-      fontSize: "16px",
+      fontSize:{xs:"16px" , lg:customFontSize},
       borderRadius: 2,
       mb,
       mt,
