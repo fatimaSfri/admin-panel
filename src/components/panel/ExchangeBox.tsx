@@ -7,7 +7,7 @@ import { ExchangeField } from "./ExchangeField";
 import { CustomButton } from "../Use-everywhere/CustomButton";
 import { useInfoDispatch } from "../../store/hooks";
 import { setExchangeData } from "../../store/ExchangeSlice";
-import icon from "../../../assets/img/group.png"
+import exchange from "../../assets/img/exchange.png"
 import pmIcon from "../../../assets/img/PM2.svg"
 import TetherIcon from "../../../assets/img/tether2.svg"
 
@@ -144,7 +144,7 @@ const convertNumber = (
       >
         <Box
           component="img"
-          src={icon}
+          src={exchange}
           alt="icon"
           sx={{
         height:"19px"
