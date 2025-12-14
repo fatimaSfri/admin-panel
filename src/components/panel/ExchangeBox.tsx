@@ -7,7 +7,7 @@ import { ExchangeField } from "./ExchangeField";
 import { CustomButton } from "../Use-everywhere/CustomButton";
 import { useInfoDispatch } from "../../store/hooks";
 import { setExchangeData } from "../../store/ExchangeSlice";
-import icon from "../../../assets/img/Group.png"
+import icon from "../../../assets/img/group.png"
 import pmIcon from "../../../assets/img/PM2.svg"
 import TetherIcon from "../../../assets/img/tether2.svg"
 
