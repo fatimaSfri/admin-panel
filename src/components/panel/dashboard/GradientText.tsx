@@ -1,22 +1,3 @@
-// import { styled, Typography } from "@mui/material";
-
-// interface GradientTextProps {
-//     fontSizeLg?: string | number;
-//     fontSize?: string | number;
-// }
-// export const GradientText = styled(Typography)<GradientTextProps>(
-//     ({ fontSizeLg="32px" }) => ({
-//         fontFamily: "NiramitBold",
-//         fontSize:{xs:"12px",lg:"10px"} ,
-//         lineHeight: "49px",
-//         letterSpacing: "0%",
-//         textTransform: "capitalize",
-//         background: "linear-gradient(90deg, #40A578 0%, #99D9A6 100%)",
-//         WebkitBackgroundClip: "text",
-//         WebkitTextFillColor: "transparent",
-//     })
-// );
-
 import { styled, Typography } from "@mui/material";
 
 interface GradientTextProps {
