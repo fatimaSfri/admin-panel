@@ -104,6 +104,7 @@ const SidebarMenu = () => {
                   gap: { xs: 0, lg: "16px" },
                   width: isMobile ? "auto" : "100%",
                   justifyContent: isMobile ? "center" : "flex-start",
+                  alignItems:"center",
                   transition: "all 300ms ease-out",
                 }}
               >
