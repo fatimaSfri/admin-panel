@@ -7,9 +7,9 @@ import { ExchangeField } from "./ExchangeField";
 import { CustomButton } from "../Use-everywhere/CustomButton";
 import { useInfoDispatch } from "../../store/hooks";
 import { setExchangeData } from "../../store/ExchangeSlice";
-import exchange from "../../assets/img/exchange.png"
-import pmIcon from "../../../assets/img/PM2.svg"
-import TetherIcon from "../../../assets/img/tether2.svg"
+import exchange from "../../assets/img/exchange-button.svg"
+import pmIcon from "../../assets/img/PM2.svg"
+import TetherIcon from "../../assets/img/tether2.svg"
 
 interface Props {
   goToStep: (step: number) => void;
@@ -146,9 +146,6 @@ const convertNumber = (
           component="img"
           src={exchange}
           alt="icon"
-          sx={{
-        height:"19px"
-          }}
         />
       </Box>
 
