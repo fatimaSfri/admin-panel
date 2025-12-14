@@ -9,7 +9,7 @@ import {
 import { styled } from "@mui/material/styles";
 import { type AccordionProps } from "@mui/material/Accordion";
 import Polygon from "../../../assets/img/Polygon.svg";
-import arrow from "../../../assets/img/Bigarrow.svg";
+import Bigarrow from "../../../assets/img/Bigarrow.svg";
 import { AppTypographyBold } from "../../Use-everywhere/AppTypography ";
 
 const StyledAccordion = styled(Accordion)<AccordionProps>(() => ({
@@ -131,7 +131,7 @@ function QuestionBox() {
             disableGutters
           >
             <StyledAccordionSummary
-              expandIcon={<Box component="img" src={arrow} />}
+              expandIcon={<Box component="img" src={Bigarrow} />}
             >
               <Box component="img" src={Polygon} sx={{ mr: "12px" }} />
               <Typography
