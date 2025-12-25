@@ -12,135 +12,158 @@ import { ProfileIcon } from "./Icon";
 import { PartnerIcon } from "./Icon";
 import { ExitIcon } from "./Icon";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useInfoDispatch } from "../../../store/hooks";
+import { logout } from "../../../store/UserSlice";
+import { persistor } from "../../../store/Store";
 
 const SidebarMenu = () => {
-      const [selected, setSelected] = useState("dashboard");
+  const [selected, setSelected] = useState("dashboard");
+  const dispatch = useInfoDispatch();
+  const navigate = useNavigate();
 
   const menuItems = [
-    { title: "Dashboard", icon: DashboardIcon , link:"" },
-    { title: "Profile", icon: ProfileIcon , link:"edite-profile" },
-    { title: "Partner Program", icon: PartnerIcon  , link:"partner-program"},
-    { title: "Exit", icon: ExitIcon  , link:"table"},
+    { title: "Dashboard", icon: DashboardIcon, link: "" },
+    { title: "Profile", icon: ProfileIcon, link: "edite-profile" },
+    { title: "Partner Program", icon: PartnerIcon, link: "partner-program" },
+    { title: "Exit", icon: ExitIcon, link: "" },
   ];
 
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("lg")); 
+  const isMobile = useMediaQuery(theme.breakpoints.down("lg"));
+
+const handleLogout = () => {
+  dispatch(logout());
+  localStorage.removeItem("currentUser");
+
+  persistor.purge().then(() => {
+    navigate("/auth/register", { replace: true });
+    setTimeout(() => window.location.reload(),50);
+  });
+};
+
   return (
-  <Box
+    <Box
+      sx={{
+        maxWidth: "270px",
+        width: "100%",
+        height: { xs: "60px", lg: "311px" },
+        boxSizing: "border-box",
+        borderRadius: "20px",
+        backgroundColor: "rgba(250, 250, 250, 0.025)",
+        backdropFilter: "blur(20px)",
+        padding: {
+          xs: "12px 12px",
+          lg: "38px 73px 45px 32px",
+        },
+        display: "flex",
+        alignItems: "center",
+      }}
+    >
+      <ToggleButtonGroup
+        orientation={isMobile ? "horizontal" : "vertical"}
+        value={selected}
+        exclusive
+        onChange={(_, val) => {
+          if (val !== null) setSelected(val);
+        }}
         sx={{
-          maxWidth: "270px",
           width: "100%",
-          height: { xs: "60px", lg: "311px" },
-          boxSizing: "border-box",
-          borderRadius: "20px",
-          backgroundColor: "rgba(250, 250, 250, 0.025)",
-          backdropFilter: "blur(20px)",
-          padding: {
-            xs: "12px 12px", 
-            lg: "38px 73px 45px 32px",
-          },
           display: "flex",
-          alignItems: "center",
+          flexDirection: isMobile ? "row" : "column",
+          justifyContent: isMobile ? "space-between" : "flex-start",
+          gap: { xs: "0px", lg: "40px" },
+
+          "& .MuiToggleButtonGroup-grouped": {
+            boxSizing: "border-box",
+            color: "#ABABAB",
+            backgroundColor: "transparent",
+            border: "none",
+            padding: 0,
+            width: isMobile ? "auto" : "100%",
+            justifyContent: isMobile ? "center" : "flex-start",
+            transition: "all 300ms ease-out",
+
+            "&:hover": {
+              color: "white",
+              backgroundColor: "transparent !important",
+            },
+
+            "&.Mui-selected": {
+              color: "white !important",
+              backgroundColor: "transparent !important",
+              fontFamily: "NiramitSemiBold",
+              opacity: 1,
+              transition: "all 300ms ease-out",
+            },
+          },
+
+          "& .MuiToggleButton-root": {
+            textTransform: "none",
+            padding: 0,
+            margin: 0,
+            boxSizing: "border-box",
+            width: isMobile ? "auto" : "100%",
+          },
         }}
       >
-        <ToggleButtonGroup
-          orientation={isMobile ? "horizontal" : "vertical"} 
-          value={selected}
-          exclusive
-          onChange={(_, val) => {
-            if (val !== null) setSelected(val);
-          }}
-          sx={{
-            width: "100%",
-            display: "flex",
-            flexDirection: isMobile ? "row" : "column",
-            justifyContent: isMobile ? "space-between" : "flex-start",
-            gap: { xs: "0px", lg: "40px" },
-
-            "& .MuiToggleButtonGroup-grouped": {
-              boxSizing: "border-box",
-              color: "#ABABAB",
-              backgroundColor: "transparent",
-              border: "none",
-              padding: 0,
-              width: isMobile ? "auto" : "100%",
-              justifyContent: isMobile ? "center" : "flex-start",
-              transition: "all 300ms ease-out",
-
-              "&:hover": {
-                color: "white",
-                backgroundColor: "transparent !important",
-              },
-
-              "&.Mui-selected": {
-                color: "white !important",
-                backgroundColor: "transparent !important",
-                fontFamily: "NiramitSemiBold",
-                opacity: 1,
+        {menuItems.map((item, index) => {
+          const Icon = item.icon;
+          const isExit = item.title === "Exit";
+          const buttonContent = (
+            <ToggleButton
+              disableRipple
+              value={item.title}
+              onClick={isExit ? handleLogout : undefined}
+              sx={{
+                display: "flex",
+                gap: { xs: 0, lg: "16px" },
+                width: isMobile ? "auto" : "100%",
+                justifyContent: isMobile ? "center" : "flex-start",
+                alignItems: "center",
                 transition: "all 300ms ease-out",
-              },
-            },
+              }}
+            >
+              <Box sx={{ width: 18, height: 18 }}>
+                <Icon />
+              </Box>
 
-            "& .MuiToggleButton-root": {
-              textTransform: "none",
-              padding: 0,
-              margin: 0,
-              boxSizing: "border-box",
-              width: isMobile ? "auto" : "100%",
-            },
-          }}
-        >
-          {menuItems.map((item, index) => {
-            const Icon = item.icon;
-
-            const content = (
-              <Link to={item.link} style={{ textDecoration: "none" }}>
-              <ToggleButton
-                disableRipple
-                value={item.title}
+              <Typography
                 sx={{
-                  display: "flex",
-                  gap: { xs: 0, lg: "16px" },
-                  width: isMobile ? "auto" : "100%",
-                  justifyContent: isMobile ? "center" : "flex-start",
-                  alignItems:"center",
-                  transition: "all 300ms ease-out",
+                  fontSize: "18px",
+                  width: "100%",
+                  textAlign: "left",
+                  textWrap: "nowrap",
+                  display: { xs: "none", lg: "block" },
                 }}
               >
-                <Box sx={{ width: 18, height: 18 }}>
-                  <Icon />
-                </Box>
-                
-                <Typography
-                  sx={{
-                    fontSize: "18px",
-                    width: "100%",
-                    textAlign: "left",
-                    textWrap: "nowrap",
-                    display: { xs: "none", lg: "block" },
-                  }}
-                >
-                  {item.title}
-                </Typography>
-              </ToggleButton>
-              </Link>
-            );
+                {item.title}
+              </Typography>
+            </ToggleButton>
+          );
+          const finalContent = isExit ? (
+            buttonContent
+          ) : (
+            <Link
+              key={index}
+              to={item.link}
+              style={{ textDecoration: "none", width: "100%" }}
+            >
+              {buttonContent}
+            </Link>
+          );
 
-            return isMobile ? (
-              <Tooltip key={index} title={item.title} placement="top" arrow>
-                {content}
-              </Tooltip>
-            ) : (
-              <Box key={index}>{content}</Box>
-            );
-          })}
-        </ToggleButtonGroup>
-      </Box>
-  )
-}
+          return isMobile ? (
+            <Tooltip key={index} title={item.title} placement="top" arrow>
+              {finalContent}
+            </Tooltip>
+          ) : (
+            <Box key={index}>{finalContent}</Box>
+          );
+        })}
+      </ToggleButtonGroup>
+    </Box>
+  );
+};
 
-export default SidebarMenu
-
-
-
+export default SidebarMenu;

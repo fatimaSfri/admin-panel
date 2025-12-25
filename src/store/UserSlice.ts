@@ -82,7 +82,7 @@ const userSlice = createSlice({
       }
     },
 
-   updateUser(state, action: PayloadAction<UserInfo>) {
+    updateUser(state, action: PayloadAction<UserInfo>) {
       const updated = action.payload;
       const index = state.items.findIndex(
         u => u.email === state.currentUser?.email
@@ -91,9 +91,13 @@ const userSlice = createSlice({
         state.items[index] = updated;
       }
       state.currentUser = updated;
+    },
+    logout(state) {
+      state.currentUser = null;
+      state.rememberMe = false;
+      state.errors = {};
     }
-  }
-  
+  },
 });
 
 
@@ -101,10 +105,18 @@ const persistConfig = {
   key: 'user',
   storage,
   stateReconciler: autoMergeLevel2,
-  whitelist: ['items'],
+ whitelist: ['items', 'currentUser']
 };
 
 const userReducer = persistReducer<UserState>(persistConfig, userSlice.reducer);
 
-export const { addUser, loginUser, checkEmail, resetPassword ,updateUser} = userSlice.actions;
+export const { addUser, loginUser, checkEmail, resetPassword, updateUser, logout } = userSlice.actions;
 export default userReducer;  
+
+
+
+
+
+
+
+

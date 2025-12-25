@@ -18,6 +18,7 @@ interface CustomButtonProps extends Omit<ButtonProps, 'sx' | 'children'> {
   maxWidth?:string
   customFontSize?:string | number;
   customHight?:string | number;
+  disabled?: boolean;
 }
 
 export const CustomButton: React.FC<CustomButtonProps> = ({ 
@@ -30,9 +31,11 @@ export const CustomButton: React.FC<CustomButtonProps> = ({
   width={xs:"90%" , sm:"100%"},
   maxWidth="560px",
   customFontSize="16px",
-  customHight=60
+  customHight=60,
+  disabled = false,
 }) => (
   <Button
+   disabled={disabled}
    component={to ? Link : 'button'}   
     to={to}  
     fullWidth

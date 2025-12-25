@@ -1,8 +1,10 @@
 import ExchangeBox from "./ExchangeBox"
 import Confirm from "./Confirm"
 import TetherToPm from "./TetherToPm"
-import { useInfoSelector } from "../../store/hooks";
 import PmToTether from "./PmToTether";
+import { useSelector } from "react-redux";
+import type { AppRootState } from "../../store/Store";
+
 
 interface StepContentProps {
   step: number;
@@ -10,7 +12,7 @@ interface StepContentProps {
 }
 
 const RenderStepContent = ({ step, goToStep }: StepContentProps) => {
-  const exchangeData = useInfoSelector((state) => state.exchange.data);
+  const exchangeData = useSelector((state:AppRootState) => state.exchange.data);
 
 
   if (step === 0) return <ExchangeBox goToStep={goToStep} />;

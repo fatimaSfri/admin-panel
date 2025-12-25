@@ -7,7 +7,7 @@ export type NavItems = NavItem[];
 
 
 export const NAV_ITEMS: NavItems = [
-  { name: "Home", src: "/" },
+  { name: "Home", src: "/home" },
   { name: "About Us", src: "/about" },
   { name: "Contact Us", src: "/contact-us" },
   { name: "FAQ", src: "/faq" },

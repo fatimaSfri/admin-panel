@@ -90,11 +90,13 @@ const Confirm = ({ goToStep }: Props) => {
           }}
         >
           <CustomButton
+           disabled={agree?false:true}
             label="Confirm"
             mt={-0.25}
             mb={0}
             onClick={() => goToStep(2)}
           ></CustomButton>
+
         </Box>
       </BigBox>
     </Box>

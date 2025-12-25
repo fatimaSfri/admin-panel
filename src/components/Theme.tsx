@@ -5,11 +5,11 @@ const theme=createTheme({
     primary:{
         main:'#242C39'
     },
- 
   },
   typography: {
     fontFamily: 'Niramit',
   },
+
 })
 
 export default theme

@@ -1,8 +1,13 @@
 import { Box, Typography } from "@mui/material"
 import NetworkInputSelect from "./NetworkSelect";
 import QrScannerTS from "./QrScanner";
+import { useState } from "react";
 
 const NetworkAndAddress = () => {
+  const [address,setAddress]= useState("TJ8f92jf92j9j203jf209jf203")
+  const handleQrValue = (value: string) => {
+     setAddress(value)
+  };
   return (
         <Box
           sx={{
@@ -38,12 +43,12 @@ const NetworkAndAddress = () => {
               options={["TRON", "BSC"]}
               value="TRON"
               onChange={(v) => console.log(v)}
-              address="TJ8f92jf92j9j203jf209jf203"
+              address={address}
             />
           </Box>
 
           <Box sx={{ mx: "auto" }}>
-            <QrScannerTS/>
+            <QrScannerTS onGenerate={handleQrValue}/>
           </Box>
         </Box>
 
